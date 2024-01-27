@@ -1,1 +1,33 @@
-<p>movie-card works!</p>
+<article
+  class="relative flex flex-col w-64 h-96 rounded overflow-clip bg-neutral-950/50 backdrop-blur shadow-sm hover:shadow-md hover:shadow-purple-950 basic-animation__colors snap-start "
+>
+  <header
+    class="absolute top-0 right-0 left-0 bg-black/20 hover:bg-black/50 hover:shadow bg-blend-overlay shadow hover:text-white hover:backdrop-blur transition-all duration-500 z-10 p-2"
+  >
+    <h4 class="text-sky-500 font-bold">{{'Interestelar' | uppercase}}</h4>
+    <p class="text-white text-xs align-middle font-semibold">
+      <span class="text-yellow-500">* * * * </span>* / 2h 49m
+    </p>
+  </header>
+  <section class="aspect-w-9 aspect-h-16">
+    <img
+      src="../../../assets/placeholder.jpg"
+      alt="placeholder image"
+      class="w-full h-full object-center object-cover lg:w-full lg:h-full"
+    />
+  </section>
+  <section
+    class="absolute -bottom-24 hover:bottom-0 right-0 left-0 bg-gradient-to-b from-black/50 to-black hover:backdrop-blur hover:shadow-2xl transition-all duration-500 p-2"
+  >
+    <div class="flex justify-between text-sky-500">
+      <div>Resumen</div>
+      <div>Español</div>
+    </div>
+    <div class="text-xs flex flex-col gap-2">
+      <p>
+        Un grupo de exploradores prueban los saltos a través de agujeros de gusano en búsqueda de la sobrevivencia de la humanidad.
+      </p>
+      <p>Matthew McConaughey, Anne Hathaway, Jessica Chastain</p>
+    </div>
+  </section>
+</article>

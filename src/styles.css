@@ -3,36 +3,61 @@
 @tailwind components;
 @tailwind utilities;
 
+@font-face {
+  font-family: Graphik;
+  src: url(./assets/font/GraphikRegular.otf) format("opentype");
+}
+@font-face {
+  font-family: Graphik-Semibold;
+  src: url(./assets/font/GraphikSemibold.otf) format("opentype");
+}
+
 @layer base {
-    body {
-        @apply bg-neutral-900 text-neutral-100 font-sans
-    }
-    app-root {
-        @apply relative w-screen h-screen flex flex-col
-    }
-    app-navbar {
-        @apply z-30
-    }
-    app-sidebar {
-        @apply absolute z-20 w-48 h-screen bg-neutral-800/50 top-0 right-0 pt-[90px]  shadow hover:shadow-purple-950
-    }
-    h1, h2, h3, h4, h5, h6 {
-        @apply font-serif text-purple-700
-    }
-    button {
-        @apply flex gap-2 py-2 px-6
-    }
+  body {
+    @apply bg-neutral-900 text-neutral-100 font-sans;
+  }
+  app-root {
+    @apply relative w-screen h-screen flex flex-col;
+  }
+  app-navbar {
+    @apply z-30;
+  }
+  app-sidebar {
+    @apply absolute z-20 w-48 h-screen bg-neutral-800/50 top-0 right-0 pt-[90px]  shadow hover:shadow-purple-950;
+  }
+  app-movies-slider {
+    @apply flex w-[80vw];
+  }
+  h1,
+  h2,
+  h3,
+  h4,
+  h5,
+  h6 {
+    @apply font-graphikSemiBold text-purple-700;
+  }
+  button {
+    @apply flex gap-2 py-2 px-6;
+  }
 }
 
 @layer components {
-
-    .nav-link {
-        @apply hover:text-purple-700 font-bold basic-animation__colors tracking-wider
-    }
+  .nav-link {
+    @apply hover:text-purple-700 font-bold basic-animation__colors tracking-wider;
+  }
 }
 
 @layer utilities {
-    .basic-animation__colors {
-        @apply transition-colors duration-500 ease-in-out
-    }
+  .basic-animation__colors {
+    @apply transition-colors duration-500 ease-in-out;
+  }
+  .carrousel {
+    @apply grid grid-flow-col scroll-auto gap-2 overflow-y-auto overscroll-x-contain snap-x snap-mandatory;
+  }
+  .hidescrolls {
+    scrollbar-width: none;
+  }
+  .carrousel::-webkit-scrollbar {
+    display: none;
+  }
 }
