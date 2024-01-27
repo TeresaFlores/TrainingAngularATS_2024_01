@@ -17,8 +17,14 @@ module.exports = {
       red: colors.red,
       green: colors.green,
     },
-    extend: {},
+    
+    extend: {
+      fontFamily: {
+        graphik: ['"Graphik"'],
+        graphikSemiBold: ['"Graphik-Semibold"'],
+      },
+    },
   },
-  plugins: [],
+  plugins: [require('@tailwindcss/aspect-ratio')],
 }
 
