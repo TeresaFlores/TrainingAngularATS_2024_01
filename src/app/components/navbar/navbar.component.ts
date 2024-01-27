@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
+import { NavLink } from 'src/app/models/ui.def';
 
 @Component({
   selector: 'app-navbar',
@@ -6,5 +7,7 @@ import { Component } from '@angular/core';
   styleUrls: ['./navbar.component.css']
 })
 export class NavbarComponent {
-
+  @Input() businessName: String = 'HVCinema'
+  @Input() navLinks: NavLink[] = []
 }
+

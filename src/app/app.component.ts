@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { NavLink } from './models/ui.def';
 
 @Component({
   selector: 'app-root',
@@ -6,5 +7,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./app.component.css']
 })
 export class AppComponent {
-  title = 'TrainingAngularATS_2024_01';
+  public businessName = "Home Cinema"
+  public navBarNavigationLinks: NavLink[] = [
+    { path: '/', txt: 'Home' },
+    { path: '/tickets', txt: 'Boletos' },
+    { path: '/snacks', txt: 'Alimentos' },
+    { path: '/contact', txt: 'Contacto' },
+  ]
 }
