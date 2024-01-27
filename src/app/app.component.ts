@@ -1,5 +1,5 @@
 import { Component } from '@angular/core';
-import { NavLink } from './models/ui.def';
+import { NavLink } from './models/ui.defs';
 
 @Component({
   selector: 'app-root',

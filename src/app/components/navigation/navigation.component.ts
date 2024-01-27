@@ -1,5 +1,5 @@
 import { Component, Input } from '@angular/core';
-import { NavLink } from 'src/app/models/ui.def';
+import { NavLink } from 'src/app/models/ui.defs';
 
 @Component({
   selector: 'app-navigation',
