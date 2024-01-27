@@ -7,6 +7,15 @@
     body {
         @apply bg-neutral-900 text-neutral-100 font-sans
     }
+    app-root {
+        @apply relative w-screen h-screen flex flex-col
+    }
+    app-navbar {
+        @apply z-30
+    }
+    app-sidebar {
+        @apply absolute z-20 w-48 h-screen bg-neutral-800/50 top-0 right-0 pt-[90px]  shadow hover:shadow-purple-950
+    }
     h1, h2, h3, h4, h5, h6 {
         @apply font-serif text-purple-700
     }
