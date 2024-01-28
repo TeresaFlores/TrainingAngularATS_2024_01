@@ -1,0 +1,38 @@
+<div class="page-container my-20">
+  <div class="card-container">
+    <mat-card>
+      <div class="page-container my-20">
+        <mat-card-title>
+          <h1 class="my-20">Contáctanos</h1>
+        </mat-card-title>
+        <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
+          <mat-card-content>
+            <div class="form-container">
+              <mat-form-field>
+                <mat-label>Nombre</mat-label>
+                <input matInput formControlName="nombre" />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Correo</mat-label>
+                <input matInput formControlName="correo" />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Asunto</mat-label>
+                <input matInput formControlName="asunto" />
+              </mat-form-field>
+              <mat-form-field>
+                <mat-label>Mensaje</mat-label>
+                <textarea matInput formControlName="mensaje"></textarea>
+              </mat-form-field>
+            </div>
+          </mat-card-content>
+          <mat-card-actions>
+            <button mat-raised-button color="primary" type="submit">
+              Enviar
+            </button>
+          </mat-card-actions>
+        </form>
+      </div>
+    </mat-card>
+  </div>
+</div>

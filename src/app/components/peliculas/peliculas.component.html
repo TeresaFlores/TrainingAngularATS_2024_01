@@ -1,0 +1,21 @@
+<div class="title-text">Cartelera Cine Star!</div>
+<mat-grid-list cols="3" gutterSize="50px" rowHeight="560px">
+  <mat-grid-tile *ngFor="let pelicula of peliculas">
+    <div class="image-container">
+      <img [src]="pelicula.img" alt="" />
+    </div>
+    <mat-grid-tile-footer>
+      <div fxFill fxLayout="row" fxLayoutAlign="start center">
+        Horarios:
+        <mat-chip-listbox
+          class="margin-chip"
+          *ngFor="let hora of pelicula.horarios"
+        >
+          <mat-chip>
+            {{ hora }}
+          </mat-chip>
+        </mat-chip-listbox>
+      </div>
+    </mat-grid-tile-footer>
+  </mat-grid-tile>
+</mat-grid-list>

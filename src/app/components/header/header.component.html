@@ -1,0 +1,21 @@
+<mat-toolbar color="primary">
+  <div fxFill fxLayout="row" fxLayoutAlign=" center" fxLayoutGap="20px">
+    <div
+      routerLink="/"
+      fxFlex="10"
+      fxLayout="row"
+      fxLayoutAlign="space-around center"
+    >
+      <img src="../../../assets//images/logo.png" height="40px" /><span
+        >Cine Star</span
+      >
+    </div>
+    <button
+      *ngFor="let option of navOptions"
+      mat-button
+      [routerLink]="option.link"
+    >
+      {{ option.text }}
+    </button>
+  </div>
+</mat-toolbar>
