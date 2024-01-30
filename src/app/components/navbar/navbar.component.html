@@ -1,13 +1,13 @@
 <header class="bg-neutral-950/50 backdrop-blur flex justify-center items-center w-full shadow hover:shadow-purple-950">
-  <div class="container flex justify-between items-center py-5">
+  <div class="container flex justify-between mx-auto py-5">
     <section class="">
-      <a href="{{ navLinks[0].path }}" class="p-5 text-5xl font-semibold"
+      <a href="{{ navLinks[0].path }}" class="py-5 text-5xl font-semibold"
         ><span
           class="bg-clip-text text-transparent bg-gradient-to-r from-sky-500 hover:from-sky-500 to-purple-500 hover:to-sky-600 basic-animation__colors"
           >{{ businessName }}</span
         ></a
       >
     </section>
-    <app-navigation [links]="navLinks"></app-navigation>
+    <app-navigation [links]="navLinks" class="my-auto"></app-navigation>
   </div>
 </header>
