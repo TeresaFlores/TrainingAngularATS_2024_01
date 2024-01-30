@@ -1,0 +1,27 @@
+[
+    {
+      "type": "input",
+      "name": "nombre",
+      "label": "Nombre"
+    },
+    {
+      "type": "input",
+      "name": "correo",
+      "label": "Correo"
+    },
+    {
+      "type": "input",
+      "name": "asunto",
+      "label": "Asunto"
+    },
+    {
+      "type": "textarea",
+      "name": "mensaje",
+      "label": "Mensaje"
+    },
+    {
+      "type": "button",
+      "label": "Enviar"
+    }
+  ]
+  

@@ -2,8 +2,11 @@
   [businessName]="'HAVCinema'"
   [navLinks]="navBarNavigationLinks"
 ></app-navbar>
-<main class="">
-  <app-hero></app-hero>
-  <app-movies-slider></app-movies-slider>
-</main>
+<router-outlet>
+  <main class="">
+    <app-hero></app-hero>
+    <app-movies-slider></app-movies-slider>
+  </main>
+</router-outlet>
+
 <app-sidebar></app-sidebar>

@@ -1,1 +1,19 @@
-<p>dynamic-form works!</p>
+<form [formGroup]="dynamicForm" (ngSubmit)="onSubmit()">
+  <ng-container *ngFor="let control of formControls">
+    <div>
+      <label *ngIf="control.label">{{ control.label }}</label>
+      <input
+        *ngIf="control.type === 'input'"
+        [type]="control.type"
+        [formControlName]="control.name"
+      />
+      <textarea
+        *ngIf="control.type === 'textarea'"
+        [formControlName]="control.name"
+      ></textarea>
+      <button *ngIf="control.type === 'button'" type="submit">
+        {{ control.label }}
+      </button>
+    </div>
+  </ng-container>
+</form>

@@ -1,8 +1,54 @@
-<aside class="">
-    <header>
-        TITULO Y TIPO DE CAMBIO
-    </header>
-    <section>
-        TIPO DE CAMBIO
+<aside>
+  <header class="bg-black/50 px-4 py-8">
+    <h2>HAVCinema</h2>
+    <p>Detalles:</p>
+  </header>
+  <div class="flex flex-col justify-between gap-4 divide-y divide-purple-900">
+    <section class="details-section-wrap">
+      <p>Moneda:</p>
+      <ul class="flex justify-evenly">
+        <li>
+          <button class="details-currency-btn">
+            <img
+              src="../../../assets/media/currency/MX.svg"
+              alt="Mexican Peso"
+            />
+          </button>
+        </li>
+        <li>
+          <button class="details-currency-btn">
+            <img src="../../../assets/media/currency/US.svg" alt="US Dollar" />
+          </button>
+        </li>
+        <li>
+          <button class="details-currency-btn">
+            <img src="../../../assets/media/currency/EU.svg" alt="Euro" />
+          </button>
+        </li>
+      </ul>
     </section>
+    <section class="details-section-wrap">
+      <p>Función:</p>
+      <p>Pelicula sin seleccionar</p>
+    </section>
+    <section class="details-section-wrap">
+      <p>Bebidas y Alimentos:</p>
+      <ul>
+        <li>
+          <p>Item: <span>QTY</span></p>
+        </li>
+        <li>
+          <p>Chocolate <span>2</span></p>
+        </li>
+      </ul>
+    </section>
+    <section class="details-section-wrap">
+      <h5>Pedido:</h5>
+      <p>Boletos: <span>2</span></p>
+      <p>Alimentos y Bebidas: <span>2</span></p>
+      <h6>Gran Total:</h6>
+      <p>$250.00</p>
+      <app-button>Finalizar</app-button>
+    </section>
+  </div>
 </aside>

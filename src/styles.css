@@ -23,7 +23,7 @@
     @apply z-30;
   }
   app-sidebar {
-    @apply absolute z-20 w-48 h-screen bg-neutral-800/50 top-0 right-0 pt-[90px]  shadow hover:shadow-purple-950;
+    @apply absolute z-20 w-48 h-screen flex flex-col  bg-neutral-800/50 top-0 right-0 pt-[90px]  shadow hover:shadow-purple-950;
   }
   app-movies-slider {
     @apply flex w-[80vw];
@@ -44,6 +44,15 @@
 @layer components {
   .nav-link {
     @apply hover:text-purple-700 font-bold basic-animation__colors tracking-wider;
+  }
+  .details-section-wrap {
+    @apply flex flex-col;
+  }
+  .details-currency-btn {
+    @apply h-10 w-10 p-2;
+  }
+  .details-finalize-btn {
+    @apply text-white bg-gradient-to-r from-sky-500 via-sky-600 to-sky-700 hover:bg-gradient-to-br focus:ring-4 focus:ring-sky-300 dark:focus:ring-sky-800 shadow-lg shadow-sky-500/50 dark:shadow-lg dark:shadow-sky-800/80 font-medium rounded-lg text-sm px-5 py-2.5 text-center mr-2 mb-2;
   }
 }
 
