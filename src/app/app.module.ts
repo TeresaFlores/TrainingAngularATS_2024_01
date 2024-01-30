@@ -10,6 +10,8 @@ import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './components/layout/footer/footer.component';
+import { CarruselComponent } from './components/home/carrusel/carrusel.component';
+import { CarouselModule } from 'ngx-owl-carousel-o';
 
 @NgModule({
   declarations: [
@@ -17,6 +19,7 @@ import { FooterComponent } from './components/layout/footer/footer.component';
     HeaderComponent,
     ContactoComponent,
     FooterComponent,
+    CarruselComponent,
   ],
   imports: [
     BrowserModule,
@@ -25,7 +28,8 @@ import { FooterComponent } from './components/layout/footer/footer.component';
     MatSelectModule,
     FormsModule,
     ReactiveFormsModule,
-    MatIconModule
+    MatIconModule,
+    CarouselModule
   ],
   providers: [],
   bootstrap: [AppComponent]
