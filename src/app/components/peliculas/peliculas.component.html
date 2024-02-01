@@ -1,6 +1,7 @@
 <div class="title-text">Cartelera Cine Star!</div>
+<b *ngIf="loading$ | async">Cargando...</b>
 <mat-grid-list cols="3" gutterSize="50px" rowHeight="560px">
-  <mat-grid-tile *ngFor="let pelicula of peliculas">
+  <mat-grid-tile *ngFor="let pelicula of listaPeliculas$ | async">
     <div class="image-container">
       <img [src]="pelicula.img" alt="" />
     </div>

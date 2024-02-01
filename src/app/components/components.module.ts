@@ -18,6 +18,9 @@ import { ContactoComponent } from './contacto/contacto.component';
 import { PromosComponent } from './promos/promos.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 
+import { MayusculasDirective } from '../directivas/mayusculas.directive';
+import { CapitalizarPalabraDirective } from '../directivas/capitalizar-palabra.directive';
+
 @NgModule({
   declarations: [
     HeaderComponent,
@@ -27,6 +30,8 @@ import { PeliculasComponent } from './peliculas/peliculas.component';
     ContactoComponent,
     PromosComponent,
     PeliculasComponent,
+    MayusculasDirective,
+    CapitalizarPalabraDirective,
   ],
   imports: [
     CommonModule,
