@@ -7,6 +7,7 @@ import { FormControl, FormGroup, Validators } from '@angular/forms';
   styleUrls: ['./contacto.component.css'],
 })
 export class ContactoComponent {
+  fueEnviado: boolean = false;
   contactoForm: FormGroup = new FormGroup({
     nombre: new FormControl('', [Validators.required]),
     correo: new FormControl('', [Validators.required, Validators.email]),
@@ -15,8 +16,18 @@ export class ContactoComponent {
   });
 
   onSubmit() {
+    this.fueEnviado = true;
     if (this.contactoForm.valid) {
       console.log(this.contactoForm.value);
     }
+  }
+
+  get getContactoForm() {
+    return {
+      nombre: this.contactoForm.get('nombre'),
+      correo: this.contactoForm.get('correo'),
+      asunto: this.contactoForm.get('asunto'),
+      mensaje: this.contactoForm.get('mensaje'),
+    };
   }
 }

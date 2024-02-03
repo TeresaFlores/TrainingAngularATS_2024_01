@@ -45,8 +45,8 @@ export class PeliculasService {
       {
         id: 4,
         nombre: 'Evie: El Demonio Entre Nosotros',
-        categoria: 'B',
-        clas: ['Terror'],
+        categoria: ['Terror'],
+        clas: 'B',
         duracion: '103 min',
         img: '../../../assets/images/el-demonio-entre-nosotros.jpg',
         horarios: ['14:45', '21:00'],

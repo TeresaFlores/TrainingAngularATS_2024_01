@@ -1,22 +1,45 @@
-<div class="title-text">Cartelera Cine Star!</div>
-<b *ngIf="loading$ | async">Cargando...</b>
-<mat-grid-list cols="3" gutterSize="50px" rowHeight="560px">
-  <mat-grid-tile *ngFor="let pelicula of listaPeliculas$ | async">
-    <div class="image-container">
-      <img [src]="pelicula.img" alt="" />
+<app-titulo classes="title-text fs-3" texto="Cartelera Cine Star!"></app-titulo>
+<app-loading></app-loading>
+<div
+  *ngFor="let pelicula of listaPeliculas$ | async"
+  class="card mb-3 mx-auto"
+  style="max-width: 540px;"
+>
+  <div class="row g-3">
+    <div class="col-md-4">
+      <img
+        [src]="pelicula.img"
+        class="img-fluid rounded-start"
+        alt="{{pelicula.nombre}}"
+      />
     </div>
-    <mat-grid-tile-footer>
-      <div fxFill fxLayout="row" fxLayoutAlign="start center">
-        Horarios:
-        <mat-chip-listbox
-          class="margin-chip"
-          *ngFor="let hora of pelicula.horarios"
-        >
-          <mat-chip>
-            {{ hora }}
-          </mat-chip>
-        </mat-chip-listbox>
+    <div class="col-md-8">
+      <div class="card-body">
+        <h5 class="card-title">{{ pelicula.nombre }}</h5>
+        <span>Horarios:</span>
+        <p class="card-text">
+          <a
+            *ngFor="let hora of pelicula.horarios"
+            role="button"
+            class="btn btn-outline-dark btn-sm mx-1"
+          >
+            {{hora}}
+          </a>
+        </p>
+        <p class="card-text">
+          <span class="badge bg-secondary text-emphasis-primary mx-1"
+            >{{pelicula.clas}}</span
+          >
+          <span class="badge text-bg-dark">{{pelicula.duracion}}</span>
+        </p>
+        <p class="card-text">
+          <span
+            *ngFor="let cat of pelicula.categoria"
+            class="mx-1 badge bg-info text-emphasis-info"
+            >{{cat}}</span
+          >
+        </p>
       </div>
-    </mat-grid-tile-footer>
-  </mat-grid-tile>
-</mat-grid-list>
+    </div>
+  </div>
+</div>

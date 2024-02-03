@@ -1,4 +1,3 @@
-import { PeliculaModel } from '@core/models/Pelicula.interface';
 import { createReducer, on } from '@ngrx/store';
 import {
   cargarPeliculas,

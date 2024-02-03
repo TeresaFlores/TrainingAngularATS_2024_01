@@ -1,42 +1,86 @@
-<div class="page-container my-20">
-  <div class="card-container">
-    <mat-card>
-      <div class="page-container my-20">
-        <mat-card-title>
-          <h1 class="my-20">Contáctanos</h1>
-        </mat-card-title>
-        <form [formGroup]="contactoForm" (ngSubmit)="onSubmit()">
-          <mat-card-content>
-            <div class="form-container">
-              <mat-form-field>
-                <mat-label>Nombre</mat-label>
-                <input
-                  matInput
-                  formControlName="nombre"
-                  appCapitalizarPalabra
-                />
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Correo</mat-label>
-                <input matInput formControlName="correo" />
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Asunto</mat-label>
-                <input matInput formControlName="asunto" appMayusculas />
-              </mat-form-field>
-              <mat-form-field>
-                <mat-label>Mensaje</mat-label>
-                <textarea matInput formControlName="mensaje"></textarea>
-              </mat-form-field>
-            </div>
-          </mat-card-content>
-          <mat-card-actions>
-            <button mat-raised-button color="primary" type="submit">
-              Enviar
-            </button>
-          </mat-card-actions>
-        </form>
+<div class="card">
+  <div class="card-header">
+    <app-titulo classes="fs-3" texto="Contáctanos"></app-titulo>
+  </div>
+  <div class="card-body">
+    <form
+      [ngClass]="{ 'was-validated' : fueEnviado}"
+      class="needs-validation"
+      novalidate=""
+      [formGroup]="contactoForm"
+      (ngSubmit)="onSubmit()"
+    >
+      <div class="mb-3">
+        <label for="nombre" class="form-label">Nombre</label>
+        <input
+          class="form-control"
+          id="nombre"
+          formControlName="nombre"
+          appCapitalizarPalabra
+          required=""
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="fueEnviado && getContactoForm.nombre?.hasError('required')"
+        >
+          Nombre es requerido
+        </div>
       </div>
-    </mat-card>
+      <div class="mb-3">
+        <label for="correo" class="form-label">Correo</label>
+        <input
+          class="form-control"
+          id="correo"
+          formControlName="correo"
+          required=""
+          type="email"
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="fueEnviado && getContactoForm.correo?.hasError('required')"
+        >
+          Correo es requerido
+        </div>
+        <div
+          class="invalid-feedback"
+          *ngIf="fueEnviado && getContactoForm.correo?.hasError('email')"
+        >
+          Ingrese un correo válido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="asunto" class="form-label">Asunto</label>
+        <input
+          class="form-control"
+          id="asunto"
+          formControlName="asunto"
+          appMayusculas
+          required=""
+        />
+        <div
+          class="invalid-feedback"
+          *ngIf="fueEnviado && getContactoForm.asunto?.hasError('required')"
+        >
+          Asunto es requerido
+        </div>
+      </div>
+      <div class="mb-3">
+        <label for="mensaje" class="form-label">Mensaje</label>
+        <textarea
+          class="form-control"
+          id="mensaje"
+          formControlName="mensaje"
+          required=""
+        ></textarea>
+        <div
+          class="invalid-feedback"
+          *ngIf="fueEnviado && getContactoForm.mensaje?.hasError('required')"
+        >
+          Ingrese un mensaje
+        </div>
+      </div>
+
+      <button type="submit" class="btn btn-primary">Enviar</button>
+    </form>
   </div>
 </div>

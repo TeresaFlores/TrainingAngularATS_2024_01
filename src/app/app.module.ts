@@ -6,8 +6,10 @@ import { ComponentsModule } from './components/components.module';
 import { AppRoutingModule } from './app-routing.module';
 import { StoreModule } from '@ngrx/store';
 import { StoreDevtoolsModule } from '@ngrx/store-devtools';
-import { peliculasReducer } from './state/reducers/peliculas.reducer';
 import { ROOT_REDUCERS } from './state/app.state';
+import { EffectsModule } from '@ngrx/effects';
+import { PeliculasEffects } from './state/effects/peliculas.effects';
+import { PromosEffects } from '@state/effects/promos.effects';
 
 @NgModule({
   declarations: [AppComponent],
@@ -18,6 +20,7 @@ import { ROOT_REDUCERS } from './state/app.state';
     AppRoutingModule,
     StoreModule.forRoot(ROOT_REDUCERS),
     StoreDevtoolsModule.instrument({ maxAge: 25, logOnly: !isDevMode() }),
+    EffectsModule.forRoot([PeliculasEffects, PromosEffects]),
   ],
   providers: [],
   bootstrap: [AppComponent],

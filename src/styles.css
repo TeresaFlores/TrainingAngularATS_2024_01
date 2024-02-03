@@ -2,18 +2,3 @@
 
 html, body { height: 100%; }
 body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
-
-.title-text {
-    margin-top: 50px;
-    margin-bottom: 50px;
-    font-size: 40px;
-}
-
-.page-container {
-    padding: 0 20px ;
-}
-
-.my-20 {
-    margin-top: 20px;
-    margin-bottom: 20px;
-}
