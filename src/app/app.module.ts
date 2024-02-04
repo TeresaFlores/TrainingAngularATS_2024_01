@@ -2,20 +2,25 @@ import { NgModule } from '@angular/core';
 import { BrowserModule } from '@angular/platform-browser';
 
 import { AppComponent } from './app.component';
-import { HeaderComponent } from './components/layout/header/header.component';
-import { ContactoComponent } from './components/contacto/contacto.component';
+import { HeaderComponent } from './layouts/header/header.component';
+import { ContactoComponent } from './pages/contacto/contacto.component';
 import { BrowserAnimationsModule } from '@angular/platform-browser/animations';
 import { FormsModule, ReactiveFormsModule } from '@angular/forms';
 import { MatSelectModule } from '@angular/material/select';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatIconModule } from '@angular/material/icon';
-import { FooterComponent } from './components/layout/footer/footer.component';
-import { CarruselComponent } from './components/home/carrusel/carrusel.component';
+import { FooterComponent } from './layouts/footer/footer.component';
+import { CarruselComponent } from './components/molecules/carrusel/carrusel.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
-import { CarteleraComponent } from './components/home/cartelera/cartelera.component';
+import { CarteleraComponent } from './components/molecules/cartelera/cartelera.component';
 import { MatCardModule } from '@angular/material/card';
-import { HomeComponent } from './components/layout/home/home.component';
+import { HomeComponent } from './pages/home/home.component';
 import { MatSliderModule } from '@angular/material/slider';
+import { CinesComponent } from './components/atoms/select-cines/cines.component';
+import { CardMovieComponent } from './components/atoms/card-movie/card-movie.component';
+import { BtnHoursComponent } from './components/atoms/btn-hours/btn-hours.component';
+import { MatButtonModule } from '@angular/material/button';
+
 
 @NgModule({
   declarations: [
@@ -25,7 +30,10 @@ import { MatSliderModule } from '@angular/material/slider';
     FooterComponent,
     CarruselComponent,
     CarteleraComponent,
-    HomeComponent
+    HomeComponent,
+    CinesComponent,
+    CardMovieComponent,
+    BtnHoursComponent
   ],
   imports: [
     BrowserModule,
@@ -38,7 +46,8 @@ import { MatSliderModule } from '@angular/material/slider';
     CarouselModule,
     MatCardModule,
     MatIconModule,
-    MatSliderModule
+    MatSliderModule,
+    MatButtonModule
   ],
   providers: [],
   bootstrap: [AppComponent]

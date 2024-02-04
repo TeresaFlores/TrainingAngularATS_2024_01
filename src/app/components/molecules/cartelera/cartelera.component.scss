@@ -1,0 +1,58 @@
+.cartelera {
+  margin: 40px;
+  &-content {
+    display: flex;
+    flex-direction: column;
+    width: 100%;
+    border: 1px solid #000;
+    border-radius: 20px;
+  }
+  .filtros {
+    width: 100%;
+    display: inherit;
+    align-items: center;
+    border-bottom: 1px solid #000;
+    padding: 15px 20px;
+    .slider {
+      max-width: 350px;
+      width: 100%;
+      padding: 0 40px;
+
+      .name-label {
+        margin: 0;
+      }
+      &-horario {
+        display: flex;
+        align-items: center;
+        justify-content: space-between;
+      }
+    }
+  }
+
+  .movies-content {
+    width: 100%;
+    padding: 20px;
+    display: grid;
+    grid-template-columns: 1fr 2fr;
+    grid-template-areas: "movie hrs";
+    .movie {
+      &-card {
+        margin: auto;
+      }
+
+      &-dates {
+        padding-bottom: 15px;
+        h3 {
+          font-weight: bold;
+        }
+      }
+    }
+
+    .list-btnSchedules {
+      display: grid;
+      justify-content: center;
+      grid-template-columns: repeat(auto-fill, minmax(80px, 80px));
+      gap: 15px;
+    }
+  }
+}

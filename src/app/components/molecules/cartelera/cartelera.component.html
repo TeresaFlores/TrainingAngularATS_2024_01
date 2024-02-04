@@ -1,0 +1,118 @@
+<section class="cartelera">
+  <div class="cartelera-content">
+    <div class="filtros">
+      <app-cines />
+
+      <div class="slider">
+        <h3 class="name-label">Horarios</h3>
+        <div class="slider-horario">
+          <b>{{ valueStart < 12 ? valueStart+":00 am" : valueStart+":00 hrs" }}</b>
+          <mat-slider
+            [max]="max"
+            [min]="min" discrete>
+            <input matSliderStartThumb [(ngModel)]="valueStart" #slider>
+            <input matSliderEndThumb [(ngModel)]="valueEnd" #slider>
+          </mat-slider>
+          <b>{{ valueEnd < 12 ? valueEnd+":00 am" : valueEnd+":00 hrs"}}</b>
+        </div>
+      </div>
+    </div>
+
+    <div class="movies-content">
+      <div class="movie-card">
+        <app-card-movie [imagen]="'assets/img5.jpg'" [title]="'Imagen 5'" [mini]="true"/>
+      </div>
+      <div>
+        <div class="movie-dates">
+          <h3>VIP</h3>
+          <div class="list-btnSchedules">
+            <app-btn-hours [hour]="'8:00 am'"/>
+            <app-btn-hours [hour]="'10:00 am'"/>
+            <app-btn-hours [hour]="'12:00 pm'"/>
+            <app-btn-hours [hour]="'16:00 pm'"/>
+          </div>
+        </div>
+        <div class="movie-dates">
+          <h3>3D</h3>
+          <div class="list-btnSchedules">
+            <app-btn-hours [hour]="'10:00 am'"/>
+            <app-btn-hours [hour]="'11:00 am'"/>
+            <app-btn-hours [hour]="'13:00 pm'"/>
+            <app-btn-hours [hour]="'15:00 pm'"/>
+            <app-btn-hours [hour]="'16:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'20:00 pm'"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="movies-content">
+      <div class="movie-card">
+        <app-card-movie [imagen]="'assets/img7.jpg'" [title]="'Imagen 7'" [mini]="true"/>
+      </div>
+      <div>
+        <div class="movie-dates">
+          <h3>VIP</h3>
+          <div class="list-btnSchedules">
+            <app-btn-hours [hour]="'8:00 am'"/>
+            <app-btn-hours [hour]="'10:00 am'"/>
+            <app-btn-hours [hour]="'12:00 pm'"/>
+            <app-btn-hours [hour]="'16:00 pm'"/>
+          </div>
+        </div>
+        <div class="movie-dates">
+          <h3>3D</h3>
+          <div class="list-btnSchedules">
+            <app-btn-hours [hour]="'10:00 am'"/>
+            <app-btn-hours [hour]="'11:00 am'"/>
+            <app-btn-hours [hour]="'13:00 pm'"/>
+            <app-btn-hours [hour]="'15:00 pm'"/>
+            <app-btn-hours [hour]="'16:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'20:00 pm'"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="movies-content">
+      <div class="movie-card">
+        <app-card-movie [imagen]="'assets/img6.jpg'" [title]="'Imagen 6'" [mini]="true"/>
+      </div>
+      <div>
+        <div class="movie-dates">
+          <h3>VIP</h3>
+          <div class="list-btnSchedules">
+            <app-btn-hours [hour]="'8:00 am'"/>
+            <app-btn-hours [hour]="'10:00 am'"/>
+            <app-btn-hours [hour]="'12:00 pm'"/>
+            <app-btn-hours [hour]="'16:00 pm'"/>
+          </div>
+        </div>
+        <div class="movie-dates">
+          <h3>3D</h3>
+          <div class="list-btnSchedules">
+            <app-btn-hours [hour]="'10:00 am'"/>
+            <app-btn-hours [hour]="'11:00 am'"/>
+            <app-btn-hours [hour]="'13:00 pm'"/>
+            <app-btn-hours [hour]="'15:00 pm'"/>
+            <app-btn-hours [hour]="'16:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'18:00 pm'"/>
+            <app-btn-hours [hour]="'20:00 pm'"/>
+          </div>
+        </div>
+      </div>
+    </div>
+
+  </div>
+</section>
