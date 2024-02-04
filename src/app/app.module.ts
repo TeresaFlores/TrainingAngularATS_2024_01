@@ -12,6 +12,9 @@ import { MatIconModule } from '@angular/material/icon';
 import { FooterComponent } from './components/layout/footer/footer.component';
 import { CarruselComponent } from './components/home/carrusel/carrusel.component';
 import { CarouselModule } from 'ngx-owl-carousel-o';
+import { CarteleraComponent } from './components/home/cartelera/cartelera.component';
+import { MatCardModule } from '@angular/material/card';
+// import { HomeComponent } from './layout/home/home.component';
 
 @NgModule({
   declarations: [
@@ -20,6 +23,7 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     ContactoComponent,
     FooterComponent,
     CarruselComponent,
+    CarteleraComponent,
   ],
   imports: [
     BrowserModule,
@@ -29,7 +33,9 @@ import { CarouselModule } from 'ngx-owl-carousel-o';
     FormsModule,
     ReactiveFormsModule,
     MatIconModule,
-    CarouselModule
+    CarouselModule,
+    MatCardModule,
+    MatIconModule
   ],
   providers: [],
   bootstrap: [AppComponent]
