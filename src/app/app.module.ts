@@ -22,6 +22,7 @@ import { BtnHoursComponent } from './components/atoms/btn-hours/btn-hours.compon
 import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { ComidaComponent } from './pages/comida/comida.component';
+import { CarritoComponent } from './components/molecules/carrito/carrito.component';
 
 
 @NgModule({
@@ -36,7 +37,8 @@ import { ComidaComponent } from './pages/comida/comida.component';
     CinesComponent,
     CardMovieComponent,
     BtnHoursComponent,
-    ComidaComponent
+    ComidaComponent,
+    CarritoComponent
   ],
   imports: [
     BrowserModule,

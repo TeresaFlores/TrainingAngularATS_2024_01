@@ -1,0 +1,9 @@
+<div class="container">
+  <h1>Carrito de Compras</h1>
+  <ul>
+    <li *ngFor="let item of items">
+      {{ item }}
+    </li>
+  </ul>
+  <button (click)="clearCart()">Vaciar carrito</button>
+</div>

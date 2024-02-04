@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { CartService } from 'src/app/services/carrito/cart.service';
 
 @Component({
   selector: 'app-comida',
@@ -6,11 +7,12 @@ import { Component } from '@angular/core';
   styleUrls: ['./comida.component.css']
 })
 export class ComidaComponent {
-  cart: string[] = [];
   palomitasSize: string = 'pequeño';
   refrescoSize: string = 'pequeño';
 
+  constructor(private cartService: CartService) {}
+
   addToCart(item: string) {
-    this.cart.push(item);
+    this.cartService.addToCart(item);
   }
 }
