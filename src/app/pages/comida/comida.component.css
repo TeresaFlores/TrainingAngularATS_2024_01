@@ -1,0 +1,39 @@
+.container {
+  max-width: 600px;
+  margin: 0 auto;
+  padding: 20px;
+}
+
+.combo {
+  margin-bottom: 20px;
+  display: flex;
+  align-items: center;
+}
+
+.combo-image {
+  width: 100px;
+  height: auto;
+  margin-right: 20px;
+}
+
+.combo-details h2 {
+  font-size: 20px;
+}
+
+.combo-details p {
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+button {
+  background-color: #007bff;
+  color: #fff;
+  border: none;
+  padding: 10px 20px;
+  font-size: 16px;
+  cursor: pointer;
+}
+
+button:hover {
+  background-color: #0056b3;
+}

@@ -6,5 +6,11 @@ import { Component } from '@angular/core';
   styleUrls: ['./comida.component.css']
 })
 export class ComidaComponent {
+  cart: string[] = [];
+  palomitasSize: string = 'pequeño';
+  refrescoSize: string = 'pequeño';
 
+  addToCart(item: string) {
+    this.cart.push(item);
+  }
 }
