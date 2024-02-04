@@ -23,6 +23,8 @@ import { MatButtonModule } from '@angular/material/button';
 import { AppRoutingModule } from './app-routing.module';
 import { ComidaComponent } from './pages/comida/comida.component';
 import { CarritoComponent } from './components/molecules/carrito/carrito.component';
+import { MatSidenavModule } from '@angular/material/sidenav';
+
 
 
 @NgModule({
@@ -53,7 +55,8 @@ import { CarritoComponent } from './components/molecules/carrito/carrito.compone
     MatIconModule,
     MatSliderModule,
     MatButtonModule,
-    AppRoutingModule
+    AppRoutingModule,
+    MatSidenavModule
   ],
   providers: [],
   bootstrap: [AppComponent]

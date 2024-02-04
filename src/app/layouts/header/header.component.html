@@ -1,10 +1,16 @@
-<div class="header">
-  <h1>Title</h1>
+<header>
+    <h1>Title</h1>
 
-  <app-cines />
+    <app-cines />
 
-  <div>
-    <mat-icon>notifications</mat-icon>
-    <mat-icon>account_circle</mat-icon>
-  </div>
-</div>
+    <div class="actions-user">
+      <mat-icon>account_circle</mat-icon>
+      <button (click)="drawer.toggle()">
+        <mat-icon>shopping_cart</mat-icon>
+      </button>
+    </div>
+</header>
+
+<mat-drawer #drawer class="example-sidenav" mode="side">
+  <app-carrito />
+</mat-drawer>
