@@ -20,6 +20,8 @@ import { CinesComponent } from './components/atoms/select-cines/cines.component'
 import { CardMovieComponent } from './components/atoms/card-movie/card-movie.component';
 import { BtnHoursComponent } from './components/atoms/btn-hours/btn-hours.component';
 import { MatButtonModule } from '@angular/material/button';
+import { AppRoutingModule } from './app-routing.module';
+import { ComidaComponent } from './pages/comida/comida.component';
 
 
 @NgModule({
@@ -33,7 +35,8 @@ import { MatButtonModule } from '@angular/material/button';
     HomeComponent,
     CinesComponent,
     CardMovieComponent,
-    BtnHoursComponent
+    BtnHoursComponent,
+    ComidaComponent
   ],
   imports: [
     BrowserModule,
@@ -47,7 +50,8 @@ import { MatButtonModule } from '@angular/material/button';
     MatCardModule,
     MatIconModule,
     MatSliderModule,
-    MatButtonModule
+    MatButtonModule,
+    AppRoutingModule
   ],
   providers: [],
   bootstrap: [AppComponent]
