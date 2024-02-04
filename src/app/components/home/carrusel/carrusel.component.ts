@@ -34,6 +34,6 @@ export class CarruselComponent {
     {id: "1", src: 'assets/img1.jpg', alt: 'Imagen 1', title: 'Imagen 1'},
     {id: "2", src: 'assets/img2.jpg', alt: 'Imagen 2', title: 'Imagen 2'},
     {id: "3", src: 'assets/img3.jpg', alt: 'Imagen 3', title: 'Imagen 3'},
-    {id: "4", src: 'assets/img1.jpg', alt: 'Imagen 4', title: 'Imagen 4'},
+    {id: "4", src: 'assets/img7.jpg', alt: 'Imagen 4', title: 'Imagen 7'},
   ]
 }

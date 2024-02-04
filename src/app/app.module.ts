@@ -14,7 +14,8 @@ import { CarruselComponent } from './components/home/carrusel/carrusel.component
 import { CarouselModule } from 'ngx-owl-carousel-o';
 import { CarteleraComponent } from './components/home/cartelera/cartelera.component';
 import { MatCardModule } from '@angular/material/card';
-// import { HomeComponent } from './layout/home/home.component';
+import { HomeComponent } from './components/layout/home/home.component';
+import { MatSliderModule } from '@angular/material/slider';
 
 @NgModule({
   declarations: [
@@ -24,6 +25,7 @@ import { MatCardModule } from '@angular/material/card';
     FooterComponent,
     CarruselComponent,
     CarteleraComponent,
+    HomeComponent
   ],
   imports: [
     BrowserModule,
@@ -35,7 +37,8 @@ import { MatCardModule } from '@angular/material/card';
     MatIconModule,
     CarouselModule,
     MatCardModule,
-    MatIconModule
+    MatIconModule,
+    MatSliderModule
   ],
   providers: [],
   bootstrap: [AppComponent]
