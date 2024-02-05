@@ -1,5 +1,5 @@
 import { Injectable } from '@angular/core';
-import { Observable, of, delay } from 'rxjs';
+import { of, delay } from 'rxjs';
 
 @Injectable({
   providedIn: 'root'
@@ -8,8 +8,8 @@ export class CinesService {
 
   constructor() { }
 
-  getDataCines(): Observable<any> {
-    const data = [
+  getDataCines() {
+    return [
       {
         id: 1,
         nombre: 'Cine Antea Querétaro'
@@ -64,9 +64,5 @@ export class CinesService {
         nombre: 'Cine Xtreme Zaragoza',
       },
     ];
-
-
-
-    return of(data).pipe(delay(1500));
   }
 }

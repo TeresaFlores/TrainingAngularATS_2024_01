@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 
 @Component({
   selector: 'app-cines',
@@ -6,5 +6,5 @@ import { Component } from '@angular/core';
   styleUrls: ['./cines.component.css']
 })
 export class CinesComponent {
-
+  @Input() listCines!: any[];
 }
