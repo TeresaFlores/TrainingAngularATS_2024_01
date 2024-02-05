@@ -18,97 +18,17 @@
       </div>
     </div>
 
-    <div class="movies-content">
+    <div class="movies-content" *ngFor="let movie of listMovies">
       <div class="movie-card">
-        <app-card-movie [imagen]="'assets/img5.jpg'" [title]="'Imagen 5'" [mini]="true"/>
+        <app-card-movie [imagen]="movie.img" [title]="movie.nombre" [mini]="true"/>
       </div>
       <div>
         <div class="movie-dates">
-          <h3>VIP</h3>
+          <h3>{{movie.nombre}}</h3>
+          <span class="info-clas">{{movie.clas}}</span> <span class="info-catg">{{movie.categoria}}</span> <span class="info-time">{{movie.duracion + 'min'}}</span>
+          <h4>{{ movie.idioma }}</h4>
           <div class="list-btnSchedules">
-            <app-btn-hours [hour]="'8:00 am'"/>
-            <app-btn-hours [hour]="'10:00 am'"/>
-            <app-btn-hours [hour]="'12:00 pm'"/>
-            <app-btn-hours [hour]="'16:00 pm'"/>
-          </div>
-        </div>
-        <div class="movie-dates">
-          <h3>3D</h3>
-          <div class="list-btnSchedules">
-            <app-btn-hours [hour]="'10:00 am'"/>
-            <app-btn-hours [hour]="'11:00 am'"/>
-            <app-btn-hours [hour]="'13:00 pm'"/>
-            <app-btn-hours [hour]="'15:00 pm'"/>
-            <app-btn-hours [hour]="'16:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'20:00 pm'"/>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="movies-content">
-      <div class="movie-card">
-        <app-card-movie [imagen]="'assets/img7.jpg'" [title]="'Imagen 7'" [mini]="true"/>
-      </div>
-      <div>
-        <div class="movie-dates">
-          <h3>VIP</h3>
-          <div class="list-btnSchedules">
-            <app-btn-hours [hour]="'8:00 am'"/>
-            <app-btn-hours [hour]="'10:00 am'"/>
-            <app-btn-hours [hour]="'12:00 pm'"/>
-            <app-btn-hours [hour]="'16:00 pm'"/>
-          </div>
-        </div>
-        <div class="movie-dates">
-          <h3>3D</h3>
-          <div class="list-btnSchedules">
-            <app-btn-hours [hour]="'10:00 am'"/>
-            <app-btn-hours [hour]="'11:00 am'"/>
-            <app-btn-hours [hour]="'13:00 pm'"/>
-            <app-btn-hours [hour]="'15:00 pm'"/>
-            <app-btn-hours [hour]="'16:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'20:00 pm'"/>
-          </div>
-        </div>
-      </div>
-    </div>
-
-    <div class="movies-content">
-      <div class="movie-card">
-        <app-card-movie [imagen]="'assets/img6.jpg'" [title]="'Imagen 6'" [mini]="true"/>
-      </div>
-      <div>
-        <div class="movie-dates">
-          <h3>VIP</h3>
-          <div class="list-btnSchedules">
-            <app-btn-hours [hour]="'8:00 am'"/>
-            <app-btn-hours [hour]="'10:00 am'"/>
-            <app-btn-hours [hour]="'12:00 pm'"/>
-            <app-btn-hours [hour]="'16:00 pm'"/>
-          </div>
-        </div>
-        <div class="movie-dates">
-          <h3>3D</h3>
-          <div class="list-btnSchedules">
-            <app-btn-hours [hour]="'10:00 am'"/>
-            <app-btn-hours [hour]="'11:00 am'"/>
-            <app-btn-hours [hour]="'13:00 pm'"/>
-            <app-btn-hours [hour]="'15:00 pm'"/>
-            <app-btn-hours [hour]="'16:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'18:00 pm'"/>
-            <app-btn-hours [hour]="'20:00 pm'"/>
+            <app-btn-hours *ngFor="let hour of movie.horarios" [hour]="hour"/>
           </div>
         </div>
       </div>

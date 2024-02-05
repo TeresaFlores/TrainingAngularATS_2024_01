@@ -1,4 +1,4 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { CinesService } from 'src/app/services/cines/cines.service';
 
 @Component({
@@ -7,6 +7,7 @@ import { CinesService } from 'src/app/services/cines/cines.service';
   styleUrls: ['./cartelera.component.scss']
 })
 export class CarteleraComponent {
+  @Input() listMovies!: any[];
 
   max: number = 24;
   min: number = 8

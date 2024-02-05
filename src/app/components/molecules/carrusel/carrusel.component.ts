@@ -1,12 +1,14 @@
-import { Component } from '@angular/core';
+import { Component, Input } from '@angular/core';
 import { OwlOptions } from 'ngx-owl-carousel-o';
 
 @Component({
   selector: 'app-carrusel',
   templateUrl: './carrusel.component.html',
-  styleUrls: ['./carrusel.component.css']
+  styleUrls: ['./carrusel.component.scss']
 })
 export class CarruselComponent {
+  @Input() listMovies!: any[]
+
   customOptions: OwlOptions = {
     autoWidth: true,
     loop: true,

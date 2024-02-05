@@ -1,19 +1,16 @@
 <app-header />
 
-<app-carrusel />
+<app-carrusel [listMovies]="listPeliculas"/>
 
 <section class="estrenos">
   <h2>
     Proximos Estrenos
   </h2>
   <div class="estrenos-content">
-    <app-card-movie [imagen]="'assets/img5.jpg'" [title]="'Imagen 5'"/>
-    <app-card-movie [imagen]="'assets/img6.jpg'" [title]="'Imagen 6'"/>
-    <app-card-movie [imagen]="'assets/img.jpg'" [title]="'Imagen'"/>
-    <app-card-movie [imagen]="'assets/img4.jpg'" [title]="'Imagen 4'"/>
+    <app-card-movie *ngFor="let movieEsteno of listEstrenos" [imagen]="movieEsteno.img" [title]="movieEsteno.nombre"/>
   </div>
 </section>
 
-<app-cartelera></app-cartelera>
+<app-cartelera [listMovies]="listPeliculas"></app-cartelera>
 
 <app-footer />
