@@ -2,8 +2,20 @@
   <h1>Carrito de Compras</h1>
   <ul>
     <li *ngFor="let item of items">
-      {{ item }}
+      <img [src]="item.img" [alt]="item.nombre" class="producto-imagen">
+      <div class="producto-info">
+        <span>{{ item.nombre }}</span>
+        <span>{{ item.precio | currency:'MXN':'symbol':'1.2-2' }}</span>
+      </div>
+      <button (click)="removeFromCart(item)">Eliminar</button>
     </li>
   </ul>
+  <div *ngIf="items.length === 0">
+    <p>El carrito está vacío</p>
+  </div>
+  <div *ngIf="items.length > 0">
+    <p>Total: {{ calcularTotal() | currency:'MXN':'symbol':'1.2-2' }}</p>
+    <button (click)="checkout()">Pagar</button>
+  </div>
   <button (click)="clearCart()">Vaciar carrito</button>
 </div>

@@ -1,54 +1,44 @@
+<app-header />
+
 <div class="container">
   <h1>Combos de Palomitas y Refrescos</h1>
 
-  <div class="combo">
-    <img src="assets/combo1.jpg" alt="Combo 1" class="combo-image">
-    <div class="combo-details">
-      <h2>Combo 1</h2>
-      <p>Palomitas medianas + Refresco pequeño</p>
-      <button (click)="addToCart('Combo 1')">Agregar al carrito</button>
+  <div class="d-flex">
+    <div class="combos">
+      <h2>Combos</h2>
+      <div *ngFor="let producto of listProductos">
+        <ng-container *ngIf="producto.type === 'combo'">
+          <div class="combo">
+            <img [src]="producto.img" [alt]="producto.nombre" class="combo-image">
+            <div class="combo-details">
+              <h3>{{producto.nombre}}</h3>
+              <p>{{producto.detalle}}</p>
+              <p>{{producto.price | currency}}</p>
+              <button (click)="addToCart(producto)">Agregar al carrito</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
     </div>
-  </div>
-  <div class="combo">
-    <img src="assets/combo2.jpg" alt="Combo 2" class="combo-image">
-    <div class="combo-details">
-      <h2>Combo 2</h2>
-      <p>Palomitas grandes + Refresco grande</p>
-      <button (click)="addToCart('Combo 2')">Agregar al carrito</button>
-    </div>
-  </div>
 
-  <!-- Sección a la carta -->
-  <h2>A la carta</h2>
-  <div class="item">
-    <img src="assets/palomitas.jpg" alt="Palomitas" class="item-image">
-    <div class="item-details">
-      <h3>Palomitas</h3>
-      <p>Selecciona el tamaño:</p>
-      <select [(ngModel)]="palomitasSize">
-        <option value="pequeño">Pequeño</option>
-        <option value="mediano">Mediano</option>
-        <option value="grande">Grande</option>
-      </select>
-      <button (click)="addToCart('Palomitas ' + palomitasSize)">Agregar al carrito</button>
-    </div>
-  </div>
-  <div class="item">
-    <img src="assets/refresco.jpg" alt="Refresco" class="item-image">
-    <div class="item-details">
-      <h3>Refresco</h3>
-      <p>Selecciona el tamaño:</p>
-      <select [(ngModel)]="refrescoSize">
-        <option value="pequeño">Pequeño</option>
-        <option value="mediano">Mediano</option>
-        <option value="grande">Grande</option>
-      </select>
-      <button (click)="addToCart('Refresco ' + refrescoSize)">Agregar al carrito</button>
+    <!-- Sección a la carta -->
+    <div class="carta">
+      <h2>A la carta</h2>
+      <div *ngFor="let producto of listProductos">
+        <ng-container *ngIf="producto.type === 'carta'">
+          <div class="item">
+            <img [src]="producto.img" [alt]="producto.nombre" class="item-image">
+            <div class="item-details">
+              <h3>{{producto.nombre}}</h3>
+              <p>{{producto.detalle}}</p>
+              <p>{{producto.price | currency}}</p>
+              <button (click)="addToCart(producto)">Agregar al carrito</button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
     </div>
   </div>
 </div>
-
-
-
 
 <app-footer />

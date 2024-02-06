@@ -1,17 +1,36 @@
 .container {
-  max-width: 600px;
+  max-width: 1200px;
   margin: 0 auto;
   padding: 20px;
 }
 
-.combo {
+h1{
+  font-weight: bold;
+}
+
+.d-flex {
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  grid-template-areas: "carta combos";
+}
+
+.combo, .item {
   margin-bottom: 20px;
   display: flex;
   align-items: center;
 }
 
-.combo-image {
+.combos{
+  grid-area: combos;
+}
+.carta{
+  grid-area: carta;
+}
+
+.combo-image,
+.item-image {
   width: 100px;
+  max-height: 180px;
   height: auto;
   margin-right: 20px;
 }
@@ -26,7 +45,7 @@
 }
 
 button {
-  background-color: #007bff;
+  background-color: rgb(243, 156, 18);
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -35,5 +54,5 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: rgb(216, 132, 0);
 }
