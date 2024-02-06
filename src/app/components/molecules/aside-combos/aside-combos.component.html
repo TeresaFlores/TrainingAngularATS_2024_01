@@ -1,0 +1,9 @@
+<aside class="productos">
+  <h2>¡¡Arma tu combo!!</h2>
+  <div class="producto" *ngFor="let producto of listCombos">
+    <a routerLink="/combos">
+      <img [src]="producto.img" [alt]="producto.nombre">
+      <p>{{producto.nombre}} <br> <span>{{producto.price | currency: 'MX'}}</span></p>
+    </a>
+  </div>
+</aside>

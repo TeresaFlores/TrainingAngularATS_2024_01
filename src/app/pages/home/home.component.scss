@@ -11,3 +11,10 @@
   }
 
 }
+
+.movies-content {
+  margin: 50px;
+  display: grid;
+  grid-template-columns: auto 1fr;
+  grid-template-areas: "aside movies";
+}

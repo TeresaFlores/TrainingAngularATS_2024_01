@@ -24,6 +24,7 @@ import { AppRoutingModule } from './app-routing.module';
 import { ComidaComponent } from './pages/comida/comida.component';
 import { CarritoComponent } from './components/molecules/carrito/carrito.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
+import { AsideCombosComponent } from './components/molecules/aside-combos/aside-combos.component';
 
 
 
@@ -40,7 +41,8 @@ import { MatSidenavModule } from '@angular/material/sidenav';
     CardMovieComponent,
     BtnHoursComponent,
     ComidaComponent,
-    CarritoComponent
+    CarritoComponent,
+    AsideCombosComponent
   ],
   imports: [
     BrowserModule,

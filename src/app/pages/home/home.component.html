@@ -11,6 +11,9 @@
   </div>
 </section>
 
-<app-cartelera [listMovies]="listPeliculas"></app-cartelera>
+<div class="movies-content">
+  <app-aside-combos [listCombos]="listCombos"/>
+  <app-cartelera [listMovies]="listPeliculas"></app-cartelera>
+</div>
 
 <app-footer />
