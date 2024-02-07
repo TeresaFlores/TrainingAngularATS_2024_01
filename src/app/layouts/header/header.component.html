@@ -11,6 +11,8 @@
     </div>
 </header>
 
-<mat-drawer #drawer class="example-sidenav" mode="side">
-  <app-carrito />
+<mat-drawer #drawer class="sidenav" mode="side">
+  <div class="sidenav-content">
+    <app-carrito (cerrarDrawer)="cerrarDrawer()"/>
+  </div>
 </mat-drawer>

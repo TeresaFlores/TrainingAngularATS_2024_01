@@ -1,0 +1,132 @@
+.carrito {
+  padding: 10px;
+  width: 100%;
+  height: 100%;
+  display: flex;
+  flex-direction: column;
+  align-items: flex-start;
+
+  h1 {
+    margin-bottom: 20px;
+    text-align: center;
+    width: 100%;
+  }
+
+  ul {
+    width: 100%;
+    list-style-type: none;
+    padding: 0;
+    margin-bottom: 10px;
+    li {
+      display: flex;
+      align-items: center;
+      margin-bottom: 10px;
+    }
+  }
+
+  &-vacio {
+    padding: 20px;
+    width: 80%;
+    margin: 20px auto;
+    text-align: center;
+    border-radius: 10px;
+    background-color: #FCF3CF;
+    p {
+      font-weight: bold;
+    }
+  }
+
+  .producto {
+    &-info {
+      flex-grow: 1;
+    }
+    &-imagen {
+      width: 100px;
+      max-height: 180px;
+      height: auto;
+    }
+  }
+
+  &-total {
+    span {
+      font-weight: bold;
+    }
+  }
+
+  &-actions {
+    width: 100%;
+    display: grid;
+    grid-template-columns: 1fr 1fr;
+    grid-template-areas: "clean pay";
+    gap: 20px;
+  }
+
+  .btn {
+    color: #fff;
+    border: none;
+    min-width: 30px;
+    width: min-content;
+    padding: 5px;
+    border-radius: 5px;
+    cursor: pointer;
+
+    &-close {
+      text-align: center;
+      background-color: #F5B7B1;
+      border-radius: 50px;
+      margin: 0 0 0 auto;
+      mat-icon {
+        height: 30px;
+        width: 30px;
+        font-size: 30px;
+        margin: 0;
+      }
+      &:hover {
+        background-color: #F1948A;
+      }
+    }
+    &-delete {
+      text-align: center;
+      background-color: #E74C3C;
+      &:hover {
+        background-color: #B03A2E;
+      }
+    }
+    &-pay, &-clean {
+      width: 100%;
+      display: flex;
+      gap: 10px;
+      align-items: center;
+      justify-content: center;
+      text-align: center;
+      font-weight: bold;
+    }
+    &-pay {
+      background-color: #2ECC71;
+      &:hover {
+        background-color: #239B56;
+      }
+    }
+    &-clean {
+      background-color: #3498DB;
+      &:hover {
+        background-color: #0083D8;
+      }
+    }
+  }
+
+  .disabled {
+    opacity: 0.8 !important;
+    color: #000;
+    background-color: #E5E8E8 !important;
+    cursor: default;
+    &:hover {
+      background-color: #E5E8E8 !important;
+    }
+  }
+
+  p {
+    margin: 0;
+  }
+
+}

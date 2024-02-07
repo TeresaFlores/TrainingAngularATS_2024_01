@@ -18,6 +18,18 @@ header {
   }
 }
 
+.sidenav {
+  padding: 20px;
+  background-color: rgba($color: #fff, $alpha: 0.9);
+  position: fixed;
+  overflow: hidden;
+
+  .sidenav-content {
+    max-width: 500px;
+    min-width: 420px;
+  }
+}
+
 ::ng-deep .mat-mdc-form-field-subscript-wrapper {
   display: none;
 }

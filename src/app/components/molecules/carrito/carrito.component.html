@@ -1,21 +1,50 @@
-<div class="container">
+<div class="carrito">
+  <button class="btn btn-close" mat-button (click)="cerrarCarrito()">
+    <mat-icon>close</mat-icon>
+  </button>
   <h1>Carrito de Compras</h1>
   <ul>
     <li *ngFor="let item of items">
-      <img [src]="item.img" [alt]="item.nombre" class="producto-imagen">
+      <img
+        [src]="item.img"
+        [alt]="item.nombre"
+        class="producto-imagen">
       <div class="producto-info">
-        <span>{{ item.nombre }}</span>
-        <span>{{ item.precio | currency:'MXN':'symbol':'1.2-2' }}</span>
+        <span>{{ item.nombre }}</span><br>
+        <span>{{ item.price | currency:'MXN':'symbol':'1.2-2' }}</span>
+        <span class="quantity">{{ "x" + "2"}}</span>
       </div>
-      <button (click)="removeFromCart(item)">Eliminar</button>
+      <button class="btn btn-delete" (click)="removeFromCart(item)">
+        <mat-icon>delete</mat-icon>
+      </button>
     </li>
   </ul>
-  <div *ngIf="items.length === 0">
+  <div *ngIf="items.length === 0" class="carrito-vacio">
     <p>El carrito está vacío</p>
   </div>
-  <div *ngIf="items.length > 0">
-    <p>Total: {{ calcularTotal() | currency:'MXN':'symbol':'1.2-2' }}</p>
-    <button (click)="checkout()">Pagar</button>
+  <div *ngIf="items.length > 0" class="carrito-total">
+    <h2>
+      <span>Total:</span> {{ calcularTotal() | currency:'MXN':'symbol':'1.2-2' }}
+    </h2>
   </div>
-  <button (click)="clearCart()">Vaciar carrito</button>
+  <div class="carrito-actions">
+    <button class="btn btn-clean"
+      (click)="clearCart()"
+      [disabled]="onDisabled(items)"
+      [ngClass]="onDisabled(items) ? 'disabled' : ''">
+        Vaciar carrito
+        <mat-icon>
+          delete_forever
+        </mat-icon>
+    </button>
+    <button mat-raised class="btn btn-pay"
+      (click)="checkout()"
+      [disabled]="onDisabled(items)"
+      [ngClass]="onDisabled(items) ? 'disabled' : ''">
+        Pagar
+        <mat-icon>
+          payments
+        </mat-icon>
+    </button>
+  </div>
 </div>

@@ -10,9 +10,6 @@ import { ComidaService } from 'src/app/services/comida/comida.service';
 export class ComidaComponent {
   listProductos: any[] = [];
 
-  palomitasSize: string = 'pequeño';
-  refrescoSize: string = 'pequeño';
-
   constructor(
     private cartService: CartService,
     private combosService: ComidaService

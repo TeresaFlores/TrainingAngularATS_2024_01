@@ -1,4 +1,5 @@
-import { Component } from '@angular/core';
+import { Component, ViewChild } from '@angular/core';
+import { MatDrawer } from '@angular/material/sidenav';
 import { CinesService } from 'src/app/services/cines/cines.service';
 
 interface Food {
@@ -14,6 +15,8 @@ interface Food {
 export class HeaderComponent {
   listCines: any[] = [];
 
+  @ViewChild('drawer') drawer!: MatDrawer;
+
   constructor(private cineService: CinesService) {}
 
   ngOnInit(): void {
@@ -22,5 +25,9 @@ export class HeaderComponent {
 
   getCines() {
     this.listCines = this.cineService.getDataCines();
+  }
+
+  cerrarDrawer() {
+    this.drawer.close();
   }
 }
