@@ -28,7 +28,7 @@
           <span class="info info-clas">{{movie.clas}}</span> <span *ngFor="let categoria of movie.categoria" class="info info-catg">{{categoria}}</span> <span class="info info-time">{{movie.duracion + 'min'}}</span>
           <h4>{{ movie.idioma }}</h4>
           <div class="list-btnSchedules">
-            <app-btn-hours *ngFor="let hour of movie.horarios" [hour]="hour"/>
+            <app-btn-hours *ngFor="let hour of movie.horarios" [hour]="hour" (click)="onClick(movie, movie.hour)"/>
           </div>
         </div>
       </div>

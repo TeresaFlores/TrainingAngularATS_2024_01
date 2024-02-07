@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { SelectedMovieService } from 'src/app/services/selectedMovie/selected-movie.service';
 
 @Component({
   selector: 'app-boletos',
@@ -6,5 +7,22 @@ import { Component } from '@angular/core';
   styleUrls: ['./boletos.component.css']
 })
 export class BoletosComponent {
+  movie = {
+    nombre: '',
+    clas: '',
+    categoria: '',
+    idioma: '',
+    duracion: '',
+    horarios: []
+  };
+
+  constructor(private selectedMovieService: SelectedMovieService) {
+    console.log(this.movie)
+    this.getDataMovieSelectes();
+  }
+
+  getDataMovieSelectes() {
+    this.movie = this.selectedMovieService.getSelectedMovie()
+  }
 
 }

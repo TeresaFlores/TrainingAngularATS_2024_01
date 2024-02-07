@@ -27,6 +27,7 @@ import { MatSidenavModule } from '@angular/material/sidenav';
 import { AsideCombosComponent } from './components/molecules/aside-combos/aside-combos.component';
 import { MatBadgeModule } from '@angular/material/badge';
 import { BoletosComponent } from './pages/boletos/boletos.component';
+import { DataMovieComponent } from './components/molecules/data-movie/data-movie.component';
 
 
 @NgModule({
@@ -44,7 +45,8 @@ import { BoletosComponent } from './pages/boletos/boletos.component';
     ComidaComponent,
     CarritoComponent,
     AsideCombosComponent,
-    BoletosComponent
+    BoletosComponent,
+    DataMovieComponent
   ],
   imports: [
     BrowserModule,
