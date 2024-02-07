@@ -22,6 +22,8 @@
             *ngFor="let hora of pelicula.horarios"
             role="button"
             class="btn btn-outline-dark btn-sm mx-1"
+            [routerLink]="['/boletos']"
+            [queryParams]="{peliculaId: pelicula.id, horario: hora}"
           >
             {{hora}}
           </a>

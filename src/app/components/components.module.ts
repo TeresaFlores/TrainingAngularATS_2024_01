@@ -11,6 +11,7 @@ import { PromosComponent } from './promos/promos.component';
 import { PeliculasComponent } from './peliculas/peliculas.component';
 import { LoadingComponent } from './shared/loading/loading.component';
 import { TituloComponent } from './shared/titulo/titulo.component';
+import { IconoBtnComponent } from './shared/icono-btn/icono-btn.component';
 
 import { MayusculasDirective } from '../directivas/mayusculas.directive';
 import { CapitalizarPalabraDirective } from '../directivas/capitalizar-palabra.directive';
@@ -28,9 +29,10 @@ import { CapitalizarPalabraDirective } from '../directivas/capitalizar-palabra.d
     CapitalizarPalabraDirective,
     LoadingComponent,
     TituloComponent,
+    IconoBtnComponent,
   ],
   imports: [CommonModule, RouterModule, ReactiveFormsModule],
-  exports: [HeaderComponent],
+  exports: [HeaderComponent, IconoBtnComponent],
   bootstrap: [HeaderComponent],
 })
 export class ComponentsModule {}

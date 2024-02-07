@@ -1,1 +1,74 @@
-<p>boletos works!</p>
+<div *ngIf="peliculaInfo$ | async" class="card w-75 mb-3 mx-auto">
+  <div class="card-header">
+    <app-titulo classes="fs-3" [texto]="(peliculaInfo$ | async).nombre">
+    </app-titulo>
+  </div>
+  <div class="card-body">
+    <div class="col-md-5 mx-auto">
+      <img
+        [src]="(peliculaInfo$ | async).img"
+        class="img-thumbnail"
+        alt="..."
+      />
+    </div>
+    <form
+      class="col-md-6 mx-auto mt-3 needs-validation"
+      [formGroup]="boletosForm"
+    >
+      <div class="row align-items-center justify-content-center mb-3">
+        <div class="col-4">
+          <label for="adulto" class="col-form-label">Adulto</label>
+        </div>
+        <div class="col-3">
+          <input
+            placeholder="0"
+            type="number"
+            id="adulto"
+            class="form-control"
+            formControlName="adulto"
+          />
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-center mb-3">
+        <div class="col-4">
+          <label for="nino" class="col-form-label">Niños</label>
+        </div>
+        <div class="col-3">
+          <input
+            formControlName="nino"
+            placeholder="0"
+            type="number"
+            id="nino"
+            class="form-control"
+          />
+        </div>
+      </div>
+      <div class="row align-items-center justify-content-center mb-3">
+        <div class="col-4">
+          <label for="eraEdad" class="col-form-label">3 era edad</label>
+        </div>
+        <div class="col-3">
+          <input
+            placeholder="0"
+            type="number"
+            id="eraEdad"
+            class="form-control"
+            formControlName="eraEdad"
+          />
+        </div>
+      </div>
+      <div class="row align-items-center mb-3">
+        <button
+          type="submit"
+          class="btn btn-primary d-flex justify-content-center"
+          [disabled]="!boletosForm.hasError('validacionPersonalizada')"
+        >
+          <span class="material-symbols-outlined">
+            add_shopping_cart
+          </span>
+          Agregar
+        </button>
+      </div>
+    </form>
+  </div>
+</div>

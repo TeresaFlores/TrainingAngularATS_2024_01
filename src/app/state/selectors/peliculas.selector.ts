@@ -13,3 +13,8 @@ export const selectLoading = createSelector(
   selectPeliculasFeature,
   (state: PeliculasState) => state.isLoading
 );
+
+export const selectPelicula = (peliculaId: number) =>
+  createSelector(selectListaPeliculas, (peliculas) =>
+    peliculas.find((pelicula) => pelicula.id === peliculaId)
+  );

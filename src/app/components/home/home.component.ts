@@ -8,11 +8,4 @@ import { cargarPromos } from '@state/actions/promos.actions';
   templateUrl: './home.component.html',
   styleUrls: ['./home.component.css'],
 })
-export class HomeComponent implements OnInit {
-  constructor(private store: Store<any>) {}
-
-  ngOnInit(): void {
-    this.store.dispatch(cargarPeliculas());
-    this.store.dispatch(cargarPromos());
-  }
-}
+export class HomeComponent {}
