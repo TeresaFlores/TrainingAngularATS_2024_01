@@ -11,10 +11,11 @@ header {
   }
 
   .actions-user {
-    max-width: 100px;
+    max-width: 200px;
     width: 100%;
     display: flex;
     justify-content: space-around;
+    gap: 5px;
   }
 }
 

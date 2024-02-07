@@ -6,11 +6,31 @@
     <app-cines [listCines]="listCines" />
 
     <div class="actions-user">
+      <a routerLink="/">
+        <mat-icon>
+          home
+        </mat-icon>
+      </a>
+      <a routerLink="/combos">
+        <mat-icon >
+          restaurant_menu
+        </mat-icon>
+      </a>
+      <a routerLink="/boletos">
+        <mat-icon >
+          local_activity
+        </mat-icon>
+      </a>
       <a (click)="drawer.toggle()">
         <mat-icon
           [matBadge]="listItems"
           matBadgeColor="warn">
-            shopping_cart
+          shopping_cart
+        </mat-icon>
+      </a>
+      <a routerLink="/contact">
+        <mat-icon>
+          contact_support
         </mat-icon>
       </a>
     </div>

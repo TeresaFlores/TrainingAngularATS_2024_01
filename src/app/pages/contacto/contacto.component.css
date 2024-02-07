@@ -1,6 +1,13 @@
-.container {
+section {
+  min-height: 70vh;
   max-width: 600px;
-  margin: 0 auto;
+  margin: auto;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+}
+
+.container {
   padding: 20px;
 }
 
@@ -22,7 +29,7 @@ textarea {
 }
 
 button {
-  background-color: #007bff;
+  background-color: #F39C12;
   color: #fff;
   border: none;
   padding: 10px 20px;
@@ -31,5 +38,5 @@ button {
 }
 
 button:hover {
-  background-color: #0056b3;
+  background-color: #D68910;
 }
