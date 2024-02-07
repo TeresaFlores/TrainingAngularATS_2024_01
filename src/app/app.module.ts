@@ -25,7 +25,7 @@ import { ComidaComponent } from './pages/comida/comida.component';
 import { CarritoComponent } from './components/molecules/carrito/carrito.component';
 import { MatSidenavModule } from '@angular/material/sidenav';
 import { AsideCombosComponent } from './components/molecules/aside-combos/aside-combos.component';
-
+import { MatBadgeModule } from '@angular/material/badge';
 
 
 @NgModule({
@@ -58,7 +58,8 @@ import { AsideCombosComponent } from './components/molecules/aside-combos/aside-
     MatSliderModule,
     MatButtonModule,
     AppRoutingModule,
-    MatSidenavModule
+    MatSidenavModule,
+    MatBadgeModule
   ],
   providers: [],
   bootstrap: [AppComponent]

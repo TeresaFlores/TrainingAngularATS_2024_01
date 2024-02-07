@@ -35,25 +35,23 @@ export class CarritoComponent {
   }
 
   removeFromCart(item: any): void {
-    const index = this.items.indexOf(item);
-    if (index !== -1) {
-      this.items.splice(index, 1);
-    }
+    this.cartService.removeFromCart(item);
   }
 
   calcularTotal(): number {
     this.total = 0;
     for (const item of this.items) {
-      this.total += item.price;
+      let totalItem = item.price * item.cantidad;
+      this.total += totalItem;
     }
     return this.total;
   }
 
   checkout(): void {
     if(!this.onDisabled(this.items)) {
-      this.items = [];
-      alert('¡Gracias por su compra!');
+      this.items = this.cartService.clearCart();
       this.actualizarItems();
+      alert('¡Gracias por su compra!');
     }
   }
 

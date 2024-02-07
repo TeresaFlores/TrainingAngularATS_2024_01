@@ -1,12 +1,17 @@
 <header>
-    <h1><b><i>CINEpz</i></b></h1>
+    <h1><b><i>
+      <a routerLink="/" >CINEpz</a>
+    </i></b></h1>
 
     <app-cines [listCines]="listCines" />
 
     <div class="actions-user">
-      <mat-icon>account_circle</mat-icon>
       <a (click)="drawer.toggle()">
-        <mat-icon>shopping_cart</mat-icon>
+        <mat-icon
+          [matBadge]="listItems"
+          matBadgeColor="warn">
+            shopping_cart
+        </mat-icon>
       </a>
     </div>
 </header>

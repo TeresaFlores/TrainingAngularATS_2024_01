@@ -12,7 +12,7 @@
       <div class="producto-info">
         <span>{{ item.nombre }}</span><br>
         <span>{{ item.price | currency:'MXN':'symbol':'1.2-2' }}</span>
-        <span class="quantity">{{ "x" + "2"}}</span>
+        <span class="quantity">{{ "x"+item.cantidad }}</span>
       </div>
       <button class="btn btn-delete" (click)="removeFromCart(item)">
         <mat-icon>delete</mat-icon>
