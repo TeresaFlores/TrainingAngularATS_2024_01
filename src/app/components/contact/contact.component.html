@@ -1,1 +1,114 @@
-<p>contact works!</p>
+<div class="container bd-gutter bd-layout pt-5 vh-100">
+  <div
+    class="bg-white rounded d-flex flex-column justify-content-center align-items-center align-self-center mt-5 overflow-auto shadow"
+  >
+    <div class="w-100 px-5 pt-4">
+      <h3 class="text-center fw-bold">Contact us!</h3>
+    </div>
+
+    <section class="d-flex flex-column p-3 mb-2">
+      <p class="fst-italic fw-lighter text-center">
+        If you have any comment or inquiries, please share it with us! We will
+        hear you and make sure to get feedback done.
+      </p>
+      <div>
+        <form [formGroup]="contactForm" (ngSubmit)="onSubmit()">
+          <div class="mb-3">
+            <label for="name" class="form-label fw-semibold">Name</label>
+            <input
+              id="name"
+              type="text"
+              formControlName="name"
+              class="form-control"
+              aria-describedby="name"
+              [value]="contactForm.get('name')?.value | titlecase"
+              required
+            />
+            <p
+              class="fst-italic fw-lighter text-red-600"
+              *ngIf="
+                contactForm.get('name')?.invalid &&
+                (contactForm.get('name')?.dirty ||
+                  contactForm.get('name')?.touched)
+              "
+            >
+              Please write your name.
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="email" class="form-label fw-semibold">Email</label>
+            <input
+              id="email"
+              type="email"
+              formControlName="email"
+              class="form-control"
+              aria-describedby="email"
+              required
+            />
+            <p
+              class="fst-italic fw-lighter text-red-600"
+              *ngIf="
+                contactForm.get('email')?.invalid &&
+                (contactForm.get('email')?.dirty ||
+                  contactForm.get('email')?.touched)
+              "
+            >
+              Please provide a valid email.
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="subject" class="form-label fw-semibold">Subject</label>
+            <input
+              id="subject"
+              type="text"
+              formControlName="subject"
+              class="form-control"
+              aria-describedby="subject"
+              [value]="contactForm.get('subject')?.value | uppercase"
+              required
+            />
+            <p
+              class="fst-italic fw-lighter text-red-600"
+              *ngIf="
+                contactForm.get('subject')?.invalid &&
+                (contactForm.get('subject')?.dirty ||
+                  contactForm.get('subject')?.touched)
+              "
+            >
+              Please provide the subject of your message.
+            </p>
+          </div>
+          <div class="mb-3">
+            <label for="message" class="form-label">Message</label>
+            <textarea
+              id="message"
+              rows="4"
+              formControlName="message"
+              class="form-control"
+              aria-describedby="message"
+              required
+            ></textarea>
+            <p
+              class="fst-italic fw-lighter text-red-600"
+              *ngIf="
+                contactForm.get('message')?.invalid &&
+                (contactForm.get('message')?.dirty ||
+                  contactForm.get('message')?.touched)
+              "
+            >
+              Your message should be at least 15 characters long.
+            </p>
+          </div>
+
+          <button
+            type="submit"
+            class="bg-emerald-500 hover:bg-emerald-700 disabled:bg-slate-600 text-white font-bold py-2 px-4 rounded-xl"
+            [disabled]="!contactForm.valid"
+          >
+            Send
+          </button>
+        </form>
+      </div>
+    </section>
+  </div>
+</div>
