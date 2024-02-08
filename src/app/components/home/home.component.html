@@ -25,21 +25,26 @@
         <div
           class="d-md-block bg-dark bg-opacity-50 position-absolute vh-100 vw-100 top-0 end-0"
         >
-          <div class="caption p-5">
-            <h2>{{ movie.name }}</h2>
-            <p class="text-wrap fw-lighter w-100 lh-sm my-2">
+          <div
+            class="carousel-caption p-5 bg-slate-700 bg-opacity-20 rounded-sm"
+          >
+            <h2 class="font-bold text-gray-200">{{ movie.name }}</h2>
+            <p class="text-wrap font-normal w-100 lh-sm my-2 text-gray-100">
               {{ movie.synopsis }}
             </p>
-            <div class="d-flex justify-content-start gap-2 my-3">
+            <div class="flex justify-center gap-2 my-3">
               <ng-container
                 *ngFor="let sched of movie.schedule; index as index"
               >
-                <span class="button-time">{{ sched }}</span>
+                <span
+                  class="button-time rounded-md cursor-pointer bg-slate-600 p-2 text-sky-100"
+                  >{{ sched }}</span
+                >
               </ng-container>
             </div>
             <button
               type="button"
-              class="btn button-movies fw-lighter"
+              class="bg-slate-600 text-cyan-100 p-2 rounded-xl font-semibold hover:bg-slate-500"
               data-bs-toggle="modal"
               data-bs-target="#staticBackdrop"
             >
