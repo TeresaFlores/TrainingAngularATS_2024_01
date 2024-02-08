@@ -1,0 +1,14 @@
+.card-text{
+    color: #C8CDD0;
+}
+.text-secondary{
+    color: #EFF3F5
+}
+.card{
+   background-color: #212E36;
+   box-shadow: 0 1px 10px rgba(188, 190, 193, 0.549);
+}
+
+.btn-primary{
+    background-color: #16669f;
+}

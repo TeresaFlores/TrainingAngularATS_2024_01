@@ -1,0 +1,27 @@
+<div class="container p-5">
+  <div class="row">
+    <div class="col-12">
+      <h2 class="mb-3">Playing</h2>
+    </div>
+
+    <div class="col-md-6 col-lg-4" *ngFor="let movies of movie">
+      <div class="card my-3">
+        <img
+          src='https://image.tmdb.org/t/p/w1280{{movies.backdrop_path}}'
+          class="card-image-top"
+          alt="thumbnail"
+        />
+
+        <div class="card-body">
+          <h3 class="card-title">
+            <h4 class="text-secondary">{{ movies.title }}</h4>
+          </h3>
+          <p class="card-text">
+            {{ movies.overview | slice: 0:50 }}...
+          </p>
+          <button (click)="OnMovieDetails(movies)" class="btn btn-primary btn-sm">Read More</button>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

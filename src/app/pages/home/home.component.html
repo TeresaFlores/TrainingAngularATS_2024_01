@@ -1,0 +1,9 @@
+<h1 class="mt-4">Now playing</h1>
+<div class="row mt-5" *ngIf="movie.length > 0">
+    <div class="col">
+        <app-slider [movie]="topRatedMoviesResult" ></app-slider>
+    </div>
+    <div class="container pt-5">
+        <app-card-movie [movie]="movieSwiper"></app-card-movie>
+    </div>
+</div>

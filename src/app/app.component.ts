@@ -1,4 +1,6 @@
+import { HttpClient, HttpClientModule } from '@angular/common/http';
 import { Component } from '@angular/core';
+import { MovieApiService } from './services/movie-api.service';
 
 @Component({
   selector: 'app-root',
