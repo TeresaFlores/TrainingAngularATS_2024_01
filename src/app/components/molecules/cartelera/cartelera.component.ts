@@ -33,8 +33,7 @@ export class CarteleraComponent {
   }
 
   onClick(movie: any[], horario: number) {
-    this.selectedMovieService.setSelectedMovie(movie);
-    // this.router.navigate(['/boletos']);
-    console.log(movie)
+    this.selectedMovieService.setSelectedMovie(movie, horario);
+    this.router.navigate(['/boletos']);
   }
 }

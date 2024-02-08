@@ -1,0 +1,20 @@
+/* seleccion-asientos.component.css */
+.fila {
+  display: flex;
+}
+
+.asiento {
+  width: 50px;
+  height: 50px;
+  border: 1px solid #ccc;
+  margin: 5px;
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  cursor: pointer;
+}
+
+.asiento.seleccionado {
+  background-color: #007bff;
+  color: #fff;
+}

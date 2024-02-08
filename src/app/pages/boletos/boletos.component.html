@@ -1,17 +1,53 @@
 <app-header />
 
-<div class="movie-card">
-  <!-- <app-card-movie [imagen]="movie.img" [title]="movie.nombre" [mini]="true"/> -->
-</div>
-<div>
-  <div class="movie-dates">
-    <h3>{{movie.nombre}}</h3>
-    <span class="info info-clas">{{movie.clas}}</span> <span *ngFor="let categoria of movie.categoria" class="info info-catg">{{categoria}}</span> <span class="info info-time">{{movie.duracion + 'min'}}</span>
-    <h4>{{ movie.idioma }}</h4>
-    <div class="list-btnSchedules">
-      <app-btn-hours *ngFor="let hour of movie.horarios" [hour]="hour"/>
+<section *ngIf="movie.nombre != ''; else carterela">
+  <div class="boletos">
+    <div class="data-movie">
+      <div class="movie-card">
+        <app-card-movie [imagen]="movie.img" [title]="movie.nombre" [mini]="true"/>
+      </div>
+      <div class="movie-dates">
+        <h4><b>{{movie.nombre}}</b></h4>
+        <span class="info info-time">Duración: {{movie.duracion + 'min'}}</span>
+        <div>Idioma: {{ movie.idioma }}</div>
+        <div class="list-btnSchedules">
+          Hora: {{movie.horario}}
+        </div>
+      </div>
+    </div>
+    <div class="container">
+      <h2>Selecciona la cantidad de boletos:</h2>
+      <div>
+        <label for="ninos">Niños (costo: $45):</label>
+        <input type="number" id="ninos" [(ngModel)]="cantidadNinos">
+      </div>
+      <div>
+        <label for="adultos">Adultos (costo: $60):</label>
+        <input type="number" id="adultos" [(ngModel)]="cantidadAdultos">
+      </div>
+      <div>
+        <label for="adultosMayores">Adultos mayores (costo: $40):</label>
+        <input type="number" id="adultosMayores" [(ngModel)]="cantidadAdultosMayores">
+      </div>
+      <div class="total">
+        <p>Total a pagar: ${{ calcularTotal() }}</p>
+      </div>
+
+      <div>
+        <button class="color-red" (click)="borrarSeleccion()">Cancelar</button>
+        <button class="color-green" (click)="simularPago()">Pagar</button>
+      </div>
     </div>
   </div>
-</div>
+
+  <app-select-asientos class="asientos"/>
+
+</section>
+<ng-template #carterela>
+  <div class="carterela-content">
+    <app-cartelera [listMovies]="listPeliculas"/>
+  </div>
+</ng-template>
+
 
 <app-footer />

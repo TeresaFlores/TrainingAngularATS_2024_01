@@ -1,0 +1,82 @@
+section {
+  width: 90%;
+  margin: 50px auto;
+  display: grid;
+  grid-template-columns: 1fr 1fr;
+  justify-content: center;
+  align-items: center;
+  gap: 20px;
+  padding: 20px;
+}
+
+.carterela-content {
+  width: 1000px;
+  margin: 60px auto 40px;
+  border: 1px solid #000;
+  border-radius: 20px;
+}
+
+/* Boletos  */
+.container {
+  max-width: 400px;
+  margin: 0 auto;
+}
+
+label {
+  display: block;
+  margin-bottom: 5px;
+}
+
+input {
+  width: 100px;
+  padding: 8px;
+  font-size: 16px;
+  margin-bottom: 10px;
+}
+
+.total {
+  margin-top: 20px;
+  font-size: 18px;
+}
+
+button {
+  border: none;
+  color: white;
+  padding: 15px 32px;
+  text-align: center;
+  text-decoration: none;
+  display: inline-block;
+  font-size: 16px;
+  margin: 4px 2px;
+  cursor: pointer;
+  border-radius: 5px;
+}
+.color-red {
+  background-color: #FC2424;
+}
+.color-red button:hover {
+  background-color: #E70A0A;
+}
+.color-green {
+  background-color: #2ECC71;
+}
+.color-green button:hover {
+  background-color: #239B56;
+}
+
+/* Asientos */
+.boletos {
+  display: flex;
+}
+.movie-dates {
+  display: flex;
+  flex-direction: column;
+  padding: 25px;
+}
+span .info {
+  display: inline-flex;
+}
+
+.asientos {
+  /* Estilos para el componente de selección de asientos */
+}

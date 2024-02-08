@@ -1,0 +1,8 @@
+<!-- seleccion-asientos.component.html -->
+<div class="sala-cine">
+  <div *ngFor="let fila of filas" class="fila">
+    <div *ngFor="let asiento of fila" class="asiento" (click)="toggleSeleccion(asiento)">
+      {{ asiento }}
+    </div>
+  </div>
+</div>
