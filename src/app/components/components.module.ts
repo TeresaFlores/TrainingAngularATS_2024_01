@@ -19,6 +19,8 @@ import { MultiplicadorPipe } from '../pipes/multiplicador.pipe';
 import { MayusculasDirective } from '../directivas/mayusculas.directive';
 import { CapitalizarPalabraDirective } from '../directivas/capitalizar-palabra.directive';
 import { DetalleComboComponent } from './alimentos/detalle-combo/detalle-combo.component';
+import { ToasterComponent } from './shared/toaster/toaster.component';
+import { ToastComponent } from './shared/toast/toast.component';
 
 @NgModule({
   declarations: [
@@ -37,9 +39,16 @@ import { DetalleComboComponent } from './alimentos/detalle-combo/detalle-combo.c
     DrawerComponent,
     MultiplicadorPipe,
     DetalleComboComponent,
+    ToasterComponent,
+    ToastComponent,
   ],
   imports: [CommonModule, RouterModule, FormsModule, ReactiveFormsModule],
-  exports: [HeaderComponent, IconoBtnComponent, DrawerComponent],
+  exports: [
+    HeaderComponent,
+    IconoBtnComponent,
+    DrawerComponent,
+    ToasterComponent,
+  ],
   bootstrap: [HeaderComponent],
 })
 export class ComponentsModule {}

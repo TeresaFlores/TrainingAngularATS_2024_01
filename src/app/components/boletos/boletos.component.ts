@@ -8,7 +8,9 @@ import {
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
 import { PeliculaModel } from '@core/models/Pelicula.interface';
+import { EventTypes } from '@core/models/toast.interface';
 import { Store } from '@ngrx/store';
+import { ToastService } from '@services/toast.service';
 import { AppState } from '@state/app.state';
 import { selectPelicula } from '@state/selectors/peliculas.selector';
 import { Observable } from 'rxjs';
@@ -34,6 +36,7 @@ export class BoletosComponent implements OnInit {
   );
 
   constructor(
+    private toastService: ToastService,
     private store: Store<AppState>,
     private route: ActivatedRoute,
     private router: Router
@@ -89,5 +92,10 @@ export class BoletosComponent implements OnInit {
       } ${eraEdad && `3era Edad(${eraEdad})`}`,
       total: (adulto | 0) * 50 + (nino | 0) * 45 + (eraEdad | 0) * 45,
     };
+
+    this.toastService.showToast(
+      EventTypes.Success,
+      'Compra exitosa, puede revisar los datos más abajo.'
+    );
   }
 }
