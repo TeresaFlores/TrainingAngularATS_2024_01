@@ -1,0 +1,68 @@
+<div
+  class="offcanvas offcanvas-end"
+  tabindex="-1"
+  id="offcanvasNavbar"
+  aria-labelledby="offcanvasNavbarLabel"
+>
+  <div class="offcanvas-header">
+    <h5 class="offcanvas-title" id="offcanvasNavbarLabel">
+      Carrito de compras
+    </h5>
+    <button
+      type="button"
+      class="btn-close"
+      data-bs-dismiss="offcanvas"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div *ngIf="!(listaBoletos$ | async).length">
+      Nada agregado hasta el momento
+    </div>
+    <!-- <div *ngIf="(listaBoletos$ | async).length">
+      <div
+        *ngFor="let boleto of listaBoletos$ | async"
+        class="card mb-3"
+        style="max-width: 540px;"
+      >
+        <div class="row g-0">
+          <div class="col-md-4">
+            <img
+              [src]="boleto.peliculaInfo.img"
+              class="img-fluid rounded-start"
+            />
+          </div>
+          <div class="col-md-8">
+            <div class="card-body">
+              <h6 class="card-title">
+                {{ boleto.peliculaInfo.nombre }}
+              </h6>
+              <p class="card-text">
+                Función: {{boleto.funcion}}
+              </p>
+              <p
+                *ngIf="boleto.adulto || boleto.nino || boleto.eraEdad"
+                class="card-text"
+              >
+                Boletos:
+                <span *ngIf="boleto.adulto">Adulto({{ boleto.adulto }}) </span>
+                <span *ngIf="boleto.nino">Niños({{ boleto.nino }}) </span>
+                <span *ngIf="boleto.eraEdad"
+                  >3 era Edad({{ boleto.eraEdad }})
+                </span>
+              </p>
+            </div>
+          </div>
+        </div>
+      </div>
+    </div> -->
+  </div>
+  <div class="m-3">
+    <button class="btn btn-primary w-100 d-flex justify-content-center">
+      Pagar
+      <span class="material-symbols-outlined mx-2">
+        shopping_cart_checkout
+      </span>
+    </button>
+  </div>
+</div>

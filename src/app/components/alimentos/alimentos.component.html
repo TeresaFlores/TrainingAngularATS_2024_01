@@ -1,1 +1,22 @@
-<p>alimentos works!</p>
+<app-titulo classes="title-text fs-3" texto="Combos Cine Star!"></app-titulo>
+<app-loading></app-loading>
+<div class="container mt-3 text-center">
+  <div class="row">
+    <div *ngFor="let combo of listaCombos$ | async; let i = index" class="col">
+      <div class="card" style="width: 18rem;">
+        <img
+          [routerLink]="['/alimentos/combos', combo.id]"
+          [src]="combo.src"
+          class="card-img-top"
+          alt="..."
+        />
+        <div class="card-body">
+          <h5 class="card-title">{{combo.nombre}}</h5>
+          <p class="card-text">
+            {{combo.precio | currency }}
+          </p>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>

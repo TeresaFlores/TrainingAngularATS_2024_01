@@ -10,7 +10,7 @@ export class PromosEffects {
     private promosService: PromosService
   ) {}
 
-  cargarPeliculas$ = createEffect(() =>
+  cargarPromos$ = createEffect(() =>
     this.actions$.pipe(
       ofType('[Lista Promos] Cargar Promos'),
       mergeMap(() =>

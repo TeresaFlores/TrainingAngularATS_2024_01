@@ -11,13 +11,41 @@
         alt="..."
       />
     </div>
+    <div class="accordion col-10 mx-auto mt-3" id="accordionExample">
+      <div class="accordion-item">
+        <h2 class="accordion-header">
+          <button
+            class="accordion-button collapsed"
+            type="button"
+            data-bs-toggle="collapse"
+            data-bs-target="#collapseOne"
+            aria-controls="collapseOne"
+          >
+            Sinopsis
+          </button>
+        </h2>
+        <div
+          id="collapseOne"
+          class="accordion-collapse collapse"
+          data-bs-parent="#accordionExample"
+        >
+          <div class="accordion-body">
+            {{ (peliculaInfo$ | async).sinopsis }}
+          </div>
+        </div>
+      </div>
+    </div>
     <form
       class="col-md-6 mx-auto mt-3 needs-validation"
       [formGroup]="boletosForm"
+      (ngSubmit)="onSubmit()"
     >
       <div class="row align-items-center justify-content-center mb-3">
         <div class="col-4">
           <label for="adulto" class="col-form-label">Adulto</label>
+        </div>
+        <div class="col-2">
+          $50
         </div>
         <div class="col-3">
           <input
@@ -33,6 +61,9 @@
         <div class="col-4">
           <label for="nino" class="col-form-label">Niños</label>
         </div>
+        <div class="col-2">
+          $45
+        </div>
         <div class="col-3">
           <input
             formControlName="nino"
@@ -47,6 +78,9 @@
         <div class="col-4">
           <label for="eraEdad" class="col-form-label">3 era edad</label>
         </div>
+        <div class="col-2">
+          $45
+        </div>
         <div class="col-3">
           <input
             placeholder="0"
@@ -60,15 +94,30 @@
       <div class="row align-items-center mb-3">
         <button
           type="submit"
-          class="btn btn-primary d-flex justify-content-center"
+          class="btn btn-primary "
           [disabled]="!boletosForm.hasError('validacionPersonalizada')"
         >
-          <span class="material-symbols-outlined">
-            add_shopping_cart
-          </span>
-          Agregar
+          Comprar
         </button>
       </div>
     </form>
+    <div *ngIf="mensaje" class="col-md-5 mx-auto">
+      <p>
+        <span class="fw-bold">Pelicula: </span>
+        <span>{{ mensaje['pelicula'] }}</span>
+      </p>
+      <p>
+        <span class="fw-bold">Función: </span>
+        <span>{{ mensaje['funcion'] }}</span>
+      </p>
+      <p>
+        <span class="fw-bold">Boletos: </span>
+        <span>{{ mensaje['boletos'] }}</span>
+      </p>
+      <p>
+        <span class="fw-bold">Total de compra: </span>
+        <span>${{ mensaje['total'] }}</span>
+      </p>
+    </div>
   </div>
 </div>

@@ -1,0 +1,42 @@
+<div class="d-flex justify-content-center">
+  <div class="card text-center" style="width: 18rem;">
+    <div class="card-header">
+      {{ (comboInfo$|async).nombre}}
+    </div>
+    <img [src]="(comboInfo$|async).src" class="card-img-top" alt="..." />
+    <div class="card-body">
+      <p class="card-text">
+        {{(comboInfo$|async).desc}}
+      </p>
+      <p>
+        Total:
+        <span class="card-text fw-bold ml-3"
+          >{{(comboInfo$|async).precio | multiplicador: factor | currency
+          }}</span
+        >
+      </p>
+      <div class="row align-items-center justify-content-center mb-3">
+        <div class="col-4 justify-content-center">
+          <label for="cantidad" class="form-label mb-0">Cantidad</label>
+        </div>
+        <div class="col-4">
+          <input
+            type="number"
+            class="form-control col-4"
+            id="cantidad"
+            value="1"
+            [(ngModel)]="factor"
+          />
+        </div>
+      </div>
+      <button (click)="agregarCarrito()" class="btn btn-primary col-7">
+        <div class="d-flex justify-content-evenly">
+          Agregar
+          <span class="material-symbols-outlined">
+            add_shopping_cart
+          </span>
+        </div>
+      </button>
+    </div>
+  </div>
+</div>

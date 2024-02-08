@@ -5,9 +5,9 @@ import {
   FormGroup,
   ValidationErrors,
   ValidatorFn,
-  Validators,
 } from '@angular/forms';
 import { ActivatedRoute, Router } from '@angular/router';
+import { PeliculaModel } from '@core/models/Pelicula.interface';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { selectPelicula } from '@state/selectors/peliculas.selector';
@@ -20,7 +20,10 @@ import { Observable } from 'rxjs';
 })
 export class BoletosComponent implements OnInit {
   peliculaInfo$: Observable<any> = new Observable();
+  newPeliculaInfo: PeliculaModel | null = null;
   peliculaId: number = 0;
+  funcion: string | null = null;
+  mensaje: Record<string, string | unknown> | null = null;
   boletosForm: FormGroup = new FormGroup(
     {
       adulto: new FormControl(''),
@@ -59,6 +62,7 @@ export class BoletosComponent implements OnInit {
   ngOnInit(): void {
     this.route.queryParamMap.subscribe((params) => {
       this.peliculaId = Number(params.get('peliculaId'));
+      this.funcion = params.get('horario');
       if (!this.peliculaId) {
         this.router.navigate(['/']);
       }
@@ -70,5 +74,21 @@ export class BoletosComponent implements OnInit {
     return {
       form: this.boletosForm,
     };
+  }
+
+  onSubmit() {
+    const { adulto, nino, eraEdad } = this.boletosForm.value;
+    this.peliculaInfo$.subscribe((value) => {
+      this.newPeliculaInfo = value;
+    });
+    this.mensaje = {
+      pelicula: this.newPeliculaInfo?.nombre,
+      funcion: this.funcion,
+      boletos: `Boletos: ${adulto && `Adulto(${adulto})`} ${
+        nino && `Niños(${nino})`
+      } ${eraEdad && `3era Edad(${eraEdad})`}`,
+      total: (adulto | 0) * 50 + (nino | 0) * 45 + (eraEdad | 0) * 45,
+    };
+    console.log(this.mensaje);
   }
 }
