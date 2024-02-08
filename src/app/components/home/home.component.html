@@ -1,9 +1,9 @@
-<div id="carouselMoniasMovies" class="carousel bg-dark">
+<div id="carouselMovies" class="carousel bg-dark">
   <div class="carousel-indicators">
     <ng-container *ngFor="let movie of movies; index as index">
       <button
         type="button"
-        data-bs-target="#carouselMoniasMovies"
+        data-bs-target="#carouselMovies"
         [class.active]="index === currentMovieIndex"
         [ariaCurrent]="index === currentMovieIndex"
         [ariaLabel]="movie.name"
@@ -53,7 +53,7 @@
   <button
     class="carousel-control-prev"
     type="button"
-    data-bs-target="#carouselMoniasMovies"
+    data-bs-target="#carouselMovies"
     data-bs-slide="prev"
     (click)="prevMovie()"
   >
@@ -63,7 +63,7 @@
   <button
     class="carousel-control-next"
     type="button"
-    data-bs-target="#carouselMoniasMovies"
+    data-bs-target="#carouselMovies"
     data-bs-slide="next"
     (click)="nextMovie()"
   >
