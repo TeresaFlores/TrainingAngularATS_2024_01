@@ -26,7 +26,9 @@ export class HomeComponent implements OnInit {
 
   prevMovie() {
     this.currentMovieIndex =
-      this.currentMovieIndex <= 0 ? 0 : --this.currentMovieIndex;
+      this.currentMovieIndex <= 0
+        ? this.movies.length - 1
+        : --this.currentMovieIndex;
   }
 
   newIndex(index: number) {
