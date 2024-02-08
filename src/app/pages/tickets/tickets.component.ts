@@ -83,10 +83,12 @@ export class TicketsComponent {
   }
 
   getTotalPrice() {
-    return this.ticketsPrices.reduce((acc, ticketPrice) => {
+    const totalPrice = this.ticketsPrices.reduce((acc, ticketPrice) => {
       const ticketsQuantity = this.getSelectedTickets(ticketPrice.type);
       return acc + ticketsQuantity * ticketPrice.price;
     }, 0);
+
+    return this.getCorrectVal(totalPrice);
   }
 
   disablePlus() {
