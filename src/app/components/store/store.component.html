@@ -1,1 +1,186 @@
-<p>store works!</p>
+<div class="container-xxl bd-gutter bd-layout py-5">
+  <div
+    class="bg-white rounded d-flex flex-column justify-content-center align-items-center align-self-center mt-5 overflow-auto shadow"
+  >
+    <div class="w-100 px-5 pt-4">
+      <h3 class="text-left">Food store</h3>
+    </div>
+    <div class="d-flex flex-column gap-4 my-2 mb-4">
+      <div class="w-100 px-2 pt-4">
+        <h4 class="text-left">Combos</h4>
+      </div>
+
+      <div class="d-flex gap-3 justify-content-around">
+        <ng-container *ngFor="let combo of combos; index as index">
+          <div class="card" style="width: 18rem">
+            <img
+              [src]="combo.image"
+              class="card-img-top"
+              [alt]="combo.name"
+              width="150"
+              height="200"
+            />
+            <div class="card-body">
+              <h4 class="card-text">
+                {{ combo.name }}
+              </h4>
+              <p class="card-text">
+                {{ combo.description }}
+              </p>
+              <p class="card-text">
+                {{ combo.price | currency : currency }}
+              </p>
+              <div class="d-inline-block mb-2">
+                <label class="form-label fw-bold">Quantity:</label>
+                <input
+                  class="form-control form-control-sm"
+                  [(ngModel)]="comboQty[index]"
+                  min="1"
+                  max="5"
+                  type="number"
+                />
+              </div>
+              <br />
+              <button
+                type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl"
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+
+      <hr />
+      <div class="w-100 px-2">
+        <h4 class="text-left">Popcorn</h4>
+      </div>
+      <div class="d-flex gap-3 justify-content-around">
+        <div class="d-flex gap-3 justify-content-around">
+          <ng-container *ngFor="let pop of popcorn; index as index">
+            <div class="card" style="width: 18rem">
+              <img
+                [src]="pop.image"
+                class="card-img-top"
+                [alt]="pop.name"
+                width="150"
+                height="200"
+              />
+              <div class="card-body">
+                <h4 class="card-text">
+                  {{ pop.name }}
+                </h4>
+                <p class="card-text">
+                  {{ pop.price | currency : currency }}
+                </p>
+                <div class="d-inline-block mb-2">
+                  <label class="form-label fw-bold">Quantity:</label>
+                  <input
+                    class="form-control form-control-sm"
+                    [(ngModel)]="popcornQty[index]"
+                    min="1"
+                    max="5"
+                    type="number"
+                  />
+                </div>
+                <br />
+                <button
+                  type="button"
+                  class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl"
+                >
+                  Add to cart
+                </button>
+              </div>
+            </div>
+          </ng-container>
+        </div>
+      </div>
+      <hr />
+      <div class="w-100 px-2">
+        <h4 class="text-left">Sodas</h4>
+      </div>
+      <div class="d-flex gap-3 justify-content-around">
+        <ng-container *ngFor="let sodaItem of soda; index as index">
+          <div class="card" style="width: 18rem">
+            <img
+              [src]="sodaItem.image"
+              class="card-img-top"
+              [alt]="sodaItem.name"
+              width="150"
+              height="220"
+            />
+            <div class="card-body">
+              <h4 class="card-text">
+                {{ sodaItem.name }}
+              </h4>
+              <p class="card-text">
+                {{ sodaItem.price | currency : currency }}
+              </p>
+              <div class="d-inline-block mb-2">
+                <label class="form-label fw-bold">Quantity:</label>
+                <input
+                  class="form-control form-control-sm"
+                  [(ngModel)]="sodaQty[index]"
+                  min="1"
+                  max="5"
+                  type="number"
+                />
+              </div>
+              <br />
+              <button
+                type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl"
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <hr />
+      <div class="w-100 px-2">
+        <h4 class="text-left">Food</h4>
+      </div>
+      <div class="d-flex gap-3 justify-content-between">
+        <ng-container *ngFor="let food of food; index as index">
+          <div class="card" style="width: 18rem">
+            <img
+              [src]="food.image"
+              class="card-img-top"
+              [alt]="food.name"
+              width="150"
+              height="200"
+            />
+            <div class="card-body">
+              <h4 class="card-text">
+                {{ food.name }}
+              </h4>
+              <p class="card-text">
+                {{ food.price | currency : currency }}
+              </p>
+              <div class="d-inline-block mb-2">
+                <label class="form-label fw-bold">Quantity:</label>
+                <input
+                  class="form-control form-control-sm"
+                  [(ngModel)]="foodQty[index]"
+                  min="1"
+                  max="5"
+                  type="number"
+                />
+              </div>
+              <br />
+              <button
+                type="button"
+                class="bg-blue-500 hover:bg-blue-700 text-white font-bold py-2 px-4 rounded-2xl"
+              >
+                Add to cart
+              </button>
+            </div>
+          </div>
+        </ng-container>
+      </div>
+      <hr />
+    </div>
+  </div>
+</div>
