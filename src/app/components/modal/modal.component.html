@@ -1,0 +1,64 @@
+<div
+  class="modal fade"
+  id="staticBackdrop"
+  data-bs-backdrop="static"
+  data-bs-keyboard="false"
+  tabindex="-1"
+  aria-labelledby="staticBackdropLabel"
+  aria-hidden="true"
+>
+  <div class="modal-dialog modal-dialog-centered modal-dialog-scrollable">
+    <div class="modal-content">
+      <div class="modal-header">
+        <h1 class="modal-title fs-5" id="staticBackdropLabel">
+          Select your tickets
+        </h1>
+      </div>
+      <div class="modal-body">
+        <div class="d-flex flex-column">
+          <p class="fw-medium">
+            Movie: <span class="fw-light">{{ movie }}</span>
+          </p>
+          <p class="fw-medium">
+            Type: <span class="fw-light">Traditional</span>
+          </p>
+          <p class="fw-medium">
+            Schedule: <span class="fw-light">{{ schedule }}</span>
+          </p>
+          <div class="d-flex gap-3 align-items-center">
+            <label class="form-label fw-medium" for="tickets">Quantity: </label>
+            <select
+              id="tickets"
+              #ticket
+              class="form-select modal-select"
+              (change)="selectTickets(ticket.value)"
+            >
+              <option value="1">1</option>
+              <option value="2">2</option>
+              <option value="3">3</option>
+              <option value="4">4</option>
+            </select>
+          </div>
+        </div>
+      </div>
+      <div class="modal-footer">
+        <button
+          type="button"
+          class="bg-slate-500 hover:bg-slate-400 p-2 rounded-md text-white"
+          data-bs-dismiss="modal"
+          (click)="clearMessage()"
+        >
+          Cancel
+        </button>
+        <button
+          type="button"
+          class="bg-emerald-600 hover:bg-emerald-500 p-2 rounded-md text-gray-100"
+          data-bs-dismiss="modal"
+          (click)="addTicketToCart(movie, ticketQty)"
+        >
+          Add
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

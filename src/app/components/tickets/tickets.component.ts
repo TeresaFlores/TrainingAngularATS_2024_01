@@ -1,6 +1,7 @@
 import { CommonModule } from '@angular/common';
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute } from '@angular/router';
+import { ModalService } from 'src/app/services/modal.service';
 import { MoviesService } from 'src/app/services/movies.service';
 
 @Component({
@@ -26,7 +27,8 @@ export class TicketsComponent implements OnInit {
 
   constructor(
     private movieService: MoviesService,
-    private route: ActivatedRoute
+    private route: ActivatedRoute,
+    private modalService: ModalService
   ) {
     this.movies = this.movieService.getMovies();
   }
@@ -34,6 +36,8 @@ export class TicketsComponent implements OnInit {
   selectMovieSchedule(schedule: string, movieID: number): void {
     this.currentMovie = isNaN(Math.floor(+movieID)) ? 0 : Math.floor(+movieID);
     this.movie = this.movieService.getMovie(this.currentMovie);
+    this.modalService.setSchedule(schedule);
+    this.modalService.setMovie(this.movie.name);
   }
 
   ngOnInit(): void {
@@ -43,5 +47,7 @@ export class TicketsComponent implements OnInit {
         : Math.floor(+movieId);
       this.movie = this.movieService.getMovie(this.currentMovie);
     });
+    this.modalService.setSchedule(this.movie.schedule[0]);
+    this.modalService.setMovie(this.movie.name);
   }
 }

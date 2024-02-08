@@ -10,6 +10,9 @@ import { StoreComponent } from './components/store/store.component';
 import { ContactComponent } from './components/contact/contact.component';
 import { MoviesService } from './services/movies.service';
 import { StoreService } from './services/store.service';
+import { ToastComponent } from './components/toast/toast.component';
+import { ModalComponent } from './components/modal/modal.component';
+import { CartComponent } from './components/cart/cart.component';
 
 @NgModule({
   declarations: [AppComponent, HomeComponent],
@@ -22,6 +25,9 @@ import { StoreService } from './services/store.service';
     FormsModule,
     StoreComponent,
     ReactiveFormsModule,
+    ToastComponent,
+    ModalComponent,
+    CartComponent,
   ],
   providers: [MoviesService, StoreService],
   bootstrap: [AppComponent],

@@ -1,0 +1,19 @@
+<div
+  class="toast align-items-center mt-5 end-0 position-absolute text-bg-success z-3"
+  [ngClass]="open ? 'show' : 'hide'"
+  role="alert"
+  aria-live="polite"
+  aria-atomic="true"
+  *ngIf="message !== ''"
+>
+  <div class="d-flex">
+    <div class="toast-body">{{ message }}</div>
+    <button
+      type="button"
+      class="btn-close btn-close-white me-2 m-auto"
+      data-bs-dismiss="toast"
+      aria-label="Close"
+      (click)="clearMessage()"
+    ></button>
+  </div>
+</div>

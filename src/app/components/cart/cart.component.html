@@ -1,0 +1,87 @@
+<div
+  class="offcanvas offcanvas-end"
+  aria-labelledby="carrito"
+  [ngClass]="open ? 'show' : 'hide'"
+>
+  <div class="offcanvas-header">
+    <button
+      type="button"
+      class="btn-close"
+      (click)="closeCart()"
+      aria-label="Close"
+    ></button>
+  </div>
+  <div class="offcanvas-body">
+    <div class="position-relative">
+      <h4 class="d-flex justify-content-between align-items-center mb-3">
+        <span class="text-secondary fw-bold">Tu compra</span>
+        <span class="badge bg-secondary rounded-pill">{{ getItemQty() }}</span>
+      </h4>
+
+      <ul class="d-flex flex-column gap-2 p-3 mt-3 mb-3">
+        <ng-container *ngFor="let cart of cart; index as index">
+          <li class="list-group-item d-flex justify-content-between lh-sm">
+            <div>
+              <h6 class="my-0">{{ cart.name }} x {{ cart.qty }}</h6>
+            </div>
+            <span class="text-body-secondary">
+              {{ cart.price | currency : currency }}
+            </span>
+          </li>
+        </ng-container>
+
+        <li
+          class="list-group-item d-flex justify-content-between bg-body-tertiary"
+        >
+          <span>Total:</span>
+          <strong>{{ getTotalPrice() | currency : currency }}</strong>
+        </li>
+
+        <li class="list-group-item d-flex justify-content-between">
+          <div class="dropdown">
+            <button
+              class="btn btn-secondary dropdown-toggle"
+              type="button"
+              data-bs-toggle="dropdown"
+              aria-expanded="false"
+            >
+              Currency: {{ currency }}
+            </button>
+            <ul class="dropdown-menu">
+              <li>
+                <span class="dropdown-item" (click)="changeCurrency('USD')">
+                  USD
+                </span>
+              </li>
+              <li>
+                <span class="dropdown-item" (click)="changeCurrency('EUR')">
+                  EUR
+                </span>
+              </li>
+              <li>
+                <span class="dropdown-item" (click)="changeCurrency('MXN')">
+                  MXN
+                </span>
+              </li>
+            </ul>
+          </div>
+        </li>
+      </ul>
+
+      <div class="d-flex gap-2">
+        <button
+          class="btn rounded bg-secondary text-white px-3"
+          (click)="cleanCart()"
+        >
+          Cancelar
+        </button>
+        <button
+          class="btn rounded bg-success text-white px-3"
+          (click)="payCart()"
+        >
+          Comprar
+        </button>
+      </div>
+    </div>
+  </div>
+</div>

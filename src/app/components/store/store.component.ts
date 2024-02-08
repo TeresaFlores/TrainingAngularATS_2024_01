@@ -1,7 +1,9 @@
 import { CommonModule } from '@angular/common';
-import { Component, OnInit } from '@angular/core';
+import { Component, OnDestroy, OnInit } from '@angular/core';
 import { FormsModule } from '@angular/forms';
+import { Subscription } from 'rxjs';
 import { StoreCombo, StoreFood } from 'src/app/interfaces';
+import { CartService } from 'src/app/services/cart.service';
 import { StoreService } from 'src/app/services/store.service';
 @Component({
   selector: 'app-store',
@@ -10,7 +12,7 @@ import { StoreService } from 'src/app/services/store.service';
   imports: [CommonModule, FormsModule],
   standalone: true,
 })
-export class StoreComponent implements OnInit {
+export class StoreComponent implements OnInit, OnDestroy {
   combos: StoreCombo[] = [];
   popcorn: StoreFood[] = [];
   soda: StoreFood[] = [];
@@ -23,11 +25,20 @@ export class StoreComponent implements OnInit {
 
   currency: 'USD' | 'EUR' | 'MXN' = 'MXN';
 
-  constructor(private foodService: StoreService) {
+  private currencySubscription: Subscription;
+
+  constructor(
+    private foodService: StoreService,
+    private cartService: CartService
+  ) {
     this.combos = this.foodService.getCombos();
     this.popcorn = this.foodService.getPopcorns();
     this.food = this.foodService.getFood();
     this.soda = this.foodService.getSodas();
+
+    this.currencySubscription = this.cartService.currency$.subscribe(
+      (currency) => (this.currency = currency)
+    );
   }
 
   ngOnInit(): void {
@@ -52,9 +63,53 @@ export class StoreComponent implements OnInit {
       this.sodaQty.push(1);
     });
   }
+
   setDefaultFoodQty() {
     this.food.forEach(() => {
       this.foodQty.push(1);
     });
+  }
+
+  addFoodToCart(itemID: number) {
+    const food = this.food[itemID];
+    const qty = this.foodQty[itemID];
+    const name = food.name;
+    const price = +food.price * qty;
+
+    this.cartService.addItem({ name, qty, price });
+    this.cartService.openCart();
+  }
+
+  addSodaToCart(itemID: number) {
+    const food = this.soda[itemID];
+    const qty = this.sodaQty[itemID];
+    const name = food.name;
+    const price = +food.price * qty;
+
+    this.cartService.addItem({ name, qty, price });
+    this.cartService.openCart();
+  }
+
+  addPopcornToCart(itemID: number) {
+    const food = this.popcorn[itemID];
+    const qty = this.popcornQty[itemID];
+    const name = food.name;
+    const price = +food.price * qty;
+
+    this.cartService.addItem({ name, qty, price });
+    this.cartService.openCart();
+  }
+  addComboToCart(itemID: number) {
+    const food = this.combos[itemID];
+    const qty = this.comboQty[itemID];
+    const name = food.name;
+    const price = +food.price * qty;
+
+    this.cartService.addItem({ name, qty, price });
+    this.cartService.openCart();
+  }
+
+  ngOnDestroy(): void {
+    this.currencySubscription.unsubscribe();
   }
 }
