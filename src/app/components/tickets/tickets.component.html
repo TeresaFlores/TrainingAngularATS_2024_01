@@ -1,1 +1,49 @@
-<p>tickets works!</p>
+<div class="container-xxl bd-gutter bd-layout py-5">
+  <div
+    class="bg-white rounded d-flex flex-column justify-content-center align-items-center align-self-center mt-5 overflow-auto shadow"
+  >
+    <div class="w-100 px-5 pt-5">
+      <h3 class="text-left">Movies</h3>
+    </div>
+    <div class="d-flex flex-column gap-2 w-100 px-4 pt-4">
+      <ng-container *ngFor="let movie of movies; index as index">
+        <div class="container flex gap-8 mx-auto w-100 p-2">
+          <div class="movie mx-2">
+            <img
+              [src]="movie.image.cartel"
+              class="border rounded shadow-sm h-fit"
+              [alt]="movie.name"
+              width="360"
+              height="340"
+            />
+          </div>
+          <div class="d-flex flex-column mx-2">
+            <h4 class="fw-bold">{{ movie.name }}</h4>
+            <p class="font-light">Director: {{ movie.director }}</p>
+            <div class="d-flex mt-2 gap-2">
+              <p class="bg-stone-400 px-2">
+                {{ movie.clasification }}
+              </p>
+              <p class="fw-lighter">{{ movie.lengthTime }}</p>
+            </div>
+            <p class="text-wrap text-break fw-lighter w-75 lh-sm">
+              {{ movie.synopsis }}
+            </p>
+            <div class="flex justify-start gap-2 my-2">
+              <ng-container *ngFor="let sched of movie.schedule">
+                <a
+                  class="shadow-sm cursor-pointer bg-slate-400 hover:bg-slate-300 rounded-md text-slate-800 p-2 no-underline hover:underline"
+                  data-bs-toggle="modal"
+                  data-bs-target="#staticBackdrop"
+                  (click)="selectMovieSchedule(sched, index)"
+                  >{{ sched }}</a
+                >
+              </ng-container>
+            </div>
+          </div>
+        </div>
+        <hr />
+      </ng-container>
+    </div>
+  </div>
+</div>

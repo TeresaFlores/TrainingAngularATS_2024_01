@@ -12,10 +12,11 @@ import { MoviesService } from './services/movies.service';
 import { StoreService } from './services/store.service';
 
 @NgModule({
-  declarations: [AppComponent, HomeComponent, TicketsComponent],
+  declarations: [AppComponent, HomeComponent],
   imports: [
     BrowserModule,
     AppRoutingModule,
+    TicketsComponent,
     NavbarModule,
     ContactComponent,
     FormsModule,
