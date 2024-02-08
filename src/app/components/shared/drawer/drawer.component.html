@@ -16,49 +16,43 @@
     ></button>
   </div>
   <div class="offcanvas-body">
-    <div *ngIf="!(listaBoletos$ | async).length">
+    <div *ngIf="!(listaCombos$ | async).length">
       Nada agregado hasta el momento
     </div>
-    <!-- <div *ngIf="(listaBoletos$ | async).length">
+    <div *ngIf="(listaCombos$ | async).length">
       <div
-        *ngFor="let boleto of listaBoletos$ | async"
+        *ngFor="let combo of listaCombos$ | async"
         class="card mb-3"
         style="max-width: 540px;"
       >
         <div class="row g-0">
           <div class="col-md-4">
-            <img
-              [src]="boleto.peliculaInfo.img"
-              class="img-fluid rounded-start"
-            />
+            <img [src]="combo.comboInfo.src" class="img-fluid rounded-start" />
           </div>
           <div class="col-md-8">
             <div class="card-body">
               <h6 class="card-title">
-                {{ boleto.peliculaInfo.nombre }}
+                {{ combo.comboInfo.nombre }}
               </h6>
-              <p class="card-text">
-                Función: {{boleto.funcion}}
-              </p>
-              <p
-                *ngIf="boleto.adulto || boleto.nino || boleto.eraEdad"
-                class="card-text"
-              >
-                Boletos:
-                <span *ngIf="boleto.adulto">Adulto({{ boleto.adulto }}) </span>
-                <span *ngIf="boleto.nino">Niños({{ boleto.nino }}) </span>
-                <span *ngIf="boleto.eraEdad"
-                  >3 era Edad({{ boleto.eraEdad }})
-                </span>
-              </p>
+              <h6 class="fw-lighter">Cantidad: {{ combo.cantidad }}</h6>
+              <h6 class="fw-lighter">Total: {{ combo. total | currency}}</h6>
             </div>
           </div>
         </div>
       </div>
-    </div> -->
+    </div>
+  </div>
+  <div class="d-flex justify-content-end m-3">
+    <div class="fs-5 w-100">
+      Total
+    </div>
+    <div class="fs-5 flex-shrink-1">{{ sumaTotal$ | async | currency}}</div>
   </div>
   <div class="m-3">
-    <button class="btn btn-primary w-100 d-flex justify-content-center">
+    <button
+      [disabled]="!(listaCombos$ | async).length"
+      class="btn btn-primary w-100 d-flex justify-content-center"
+    >
       Pagar
       <span class="material-symbols-outlined mx-2">
         shopping_cart_checkout

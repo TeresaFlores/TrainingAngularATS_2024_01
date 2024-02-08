@@ -9,4 +9,10 @@
   <span class="material-symbols-outlined m-auto">
     shopping_cart
   </span>
+  <span
+    *ngIf="(totalItems$|async) > 0"
+    class="position-absolute top-0 start-100 translate-middle badge rounded-pill bg-warning"
+  >
+    {{totalItems$|async}}
+  </span>
 </button>

@@ -1,8 +1,8 @@
-import { Observable } from 'rxjs';
-import { Component, OnInit } from '@angular/core';
+import { Observable, map, reduce } from 'rxjs';
+import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
-import { selectBoletos } from '@state/selectors/carrito.selector';
+import { selectCombos } from '@state/selectors/carrito.selector';
 
 @Component({
   selector: 'app-drawer',
@@ -10,11 +10,20 @@ import { selectBoletos } from '@state/selectors/carrito.selector';
   styleUrls: ['./drawer.component.css'],
 })
 export class DrawerComponent implements OnInit {
-  listaBoletos$: Observable<any> | null = new Observable();
+  listaCombos$: Observable<any> | null = new Observable();
+  sumaTotal$: Observable<any> | null = new Observable();
 
   constructor(private store: Store<AppState>) {}
 
   ngOnInit(): void {
-    this.listaBoletos$ = this.store.select(selectBoletos);
+    this.listaCombos$ = this.store.select(selectCombos);
+    this.sumaTotal$ = this.listaCombos$.pipe(
+      map((objetos) =>
+        objetos.map((objeto: { total: number }) => objeto.total)
+      ),
+      map((totales) =>
+        totales.reduce((acc: number, valor: number) => acc + valor, 0)
+      )
+    );
   }
 }

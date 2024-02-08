@@ -4,7 +4,12 @@ import { AppState } from '../app.state';
 
 export const selectCarritoFeature = (state: AppState) => state.carritoState;
 
-export const selectBoletos = createSelector(
+export const selectCombos = createSelector(
   selectCarritoFeature,
-  (state: CarritoState) => state.boletos
+  (state: CarritoState) => state.combos
+);
+
+export const totalItems = createSelector(
+  selectCarritoFeature,
+  (state: CarritoState) => state.combos.length
 );

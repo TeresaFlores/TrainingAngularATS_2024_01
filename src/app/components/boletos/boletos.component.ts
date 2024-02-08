@@ -89,6 +89,5 @@ export class BoletosComponent implements OnInit {
       } ${eraEdad && `3era Edad(${eraEdad})`}`,
       total: (adulto | 0) * 50 + (nino | 0) * 45 + (eraEdad | 0) * 45,
     };
-    console.log(this.mensaje);
   }
 }
