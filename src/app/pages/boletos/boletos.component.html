@@ -30,7 +30,16 @@
         <input type="number" id="adultosMayores" [(ngModel)]="cantidadAdultosMayores">
       </div>
       <div class="total">
-        <p>Total a pagar: ${{ calcularTotal() }}</p>
+        <div>
+          Moneda:
+          <select id="moneda" [(ngModel)]="selectedCurrency">
+            <option value="MXN">Peso Mexicano</option>
+            <option value="USD">Dólares</option>
+            <option value="JPY">Yenes</option>
+          </select>
+        </div>
+        <br>
+        <p>Total a pagar: {{ calcularTotal() | currency:selectedCurrency }}</p>
       </div>
 
       <div>

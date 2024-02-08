@@ -28,11 +28,14 @@ export class BoletosComponent {
   costoAdulto: number = 60;
   costoAdultoMayor: number = 40;
 
+  selectedCurrency: string = 'MXN'
+
   private movieSubscription!: Subscription;
 
   constructor(
     private selectedMovieService: SelectedMovieService,
     private pelisService: PeliculasService,
+
   ) {
     this.getDataMovieSelectes();
     console.log(this.movie)
@@ -59,11 +62,12 @@ export class BoletosComponent {
   }
 
   calcularTotal(): number {
-    return (this.cantidadNinos * this.costoNino) +
-           (this.cantidadAdultos * this.costoAdulto) +
-           (this.cantidadAdultosMayores * this.costoAdultoMayor);
+    let total = (this.cantidadNinos * this.costoNino) +
+                (this.cantidadAdultos * this.costoAdulto) +
+                (this.cantidadAdultosMayores * this.costoAdultoMayor);
+    return this.convertirMoneda(total);
   }
-  
+
   borrarSeleccion() {
     this.cantidadNinos = 0;
     this.cantidadAdultos = 0;
@@ -72,7 +76,16 @@ export class BoletosComponent {
 
   simularPago() {
     const totalPagar = this.calcularTotal();
-    alert(`Se realizó el pago exitosamente por un total de $${totalPagar}`);
+    alert(`Se realizó el pago exitosamente por un total de ${this.selectedCurrency} ${totalPagar.toFixed(2)}`);
+  }
+
+  convertirMoneda(total: number): number {
+    if (this.selectedCurrency === 'JPY') {
+      return total * 110;
+    } else if (this.selectedCurrency === 'USD') {
+      return total * 20;
+    }
+    return total;
   }
 
   keys(obj: any): string[] {
