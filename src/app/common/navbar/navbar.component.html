@@ -1,0 +1,76 @@
+<div class="navbar-container">
+  <div class="logo-container">
+    <img
+      src="https://cms-assets.webediamovies.pro/cdn-cgi/image/dpr=1,fit=crop,gravity=auto,metadata=none,quality=85,width=250,height=77/production/2/148abd7bc172a25b9feb84c948ff1c86.png"
+      alt="logo"
+    />
+  </div>
+  <div class="links-container">
+    <a routerLink="/"> Movies</a>
+    <a routerLink="/food">Food</a>
+    <a routerLink="/contact">Contact</a>
+    <button (click)="changeCurrencyType()">
+      <span>Currency type: </span>
+      <span>{{ currencyType }}</span>
+    </button>
+  </div>
+</div>
+
+<style>
+  div.navbar-container {
+    display: flex;
+    justify-content: space-between;
+    height: 140px;
+    width: 100%;
+    background-color: #222222;
+    padding: 0 34px 0 40px;
+    color: white;
+  }
+
+  div.links-container {
+    display: flex;
+    font-size: 24px;
+  }
+
+  div.logo-container {
+    display: flex;
+    align-items: center;
+    font-size: 24px;
+  }
+
+  a {
+    display: flex;
+    align-items: center;
+    text-decoration: none;
+    padding: 16px;
+
+    &:hover {
+      background-color: #282828;
+    }
+
+    &:visited {
+      color: white;
+    }
+  }
+
+  button {
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    text-decoration: none;
+    gap: 4px;
+    padding: 16px;
+    background-color: transparent;
+    font-size: 20px;
+    color: white;
+
+    &:hover {
+      background-color: #282828;
+    }
+  }
+
+  img {
+    height: 60px;
+  }
+</style>

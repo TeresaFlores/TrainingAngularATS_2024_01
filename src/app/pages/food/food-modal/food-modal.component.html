@@ -1,0 +1,459 @@
+<div class="food-modal-container">
+  <div id="modal-area" class="food-modal-area" (click)="closeModal($event)">
+    <div class="food-modal">
+      <div class="item-header">
+        <button
+          class="close-button"
+          id="close-button"
+          (click)="closeModal($event)"
+        >
+          <i class="fa fa-times" style="font-size: 24px"></i>
+        </button>
+      </div>
+      <div class="item-main">
+        <div class="item-image">
+          <img [src]="selectedItem?.image" alt="item-image" />
+        </div>
+        <div class="item">
+          <div class="item-info">
+            <div class="item-name">{{ selectedItem?.name }}</div>
+            <div class="item-price">
+              {{ getCorrectVal(selectedItem?.price) | currency : currencyType }}
+            </div>
+            <div class="item-description">{{ selectedItem?.description }}</div>
+          </div>
+          <div class="item-options">
+            <ng-container *ngFor="let category of foodsCategories">
+              <ng-container *ngIf="isFoodOptionEnabled(category.id)">
+                <div class="section">
+                  <div class="section-title">
+                    <span class="section-name">
+                      {{ category.title }}
+                    </span>
+                    <ng-container *ngIf="category.required">
+                      <span class="section-required"> Required </span>
+                    </ng-container>
+                  </div>
+                  <div class="section-quantity">
+                    {{ "Choose " + category.quantity + " item"
+                    }}{{ category.quantity > 1 ? "s" : "" }}
+                  </div>
+                  <div class="section-options">
+                    <ng-container *ngFor="let option of category.options">
+                      <div class="section-option">
+                        <div class="option">
+                          <div class="option-name">
+                            {{ option.option }}
+                          </div>
+                          <div class="option-price" *ngIf="option.price">
+                            +{{
+                              getCorrectVal(option.price)
+                                | currency : currencyType
+                            }}
+                          </div>
+                        </div>
+                        <div class="option-input">
+                          <ng-container *ngIf="category.type === 'radio'">
+                            <input
+                              type="radio"
+                              [name]="category.id"
+                              (change)="changeRadio(category.id, option)"
+                            />
+                          </ng-container>
+                          <ng-container *ngIf="category.type === 'checkbox'">
+                            <input
+                              type="checkbox"
+                              [name]="category.id"
+                              (change)="changeCheckbox(category.id, option)"
+                              [disabled]="
+                                shouldDisableCheckbox(category, option)
+                              "
+                            />
+                          </ng-container>
+                        </div>
+                      </div>
+                    </ng-container>
+                  </div>
+                </div>
+              </ng-container>
+            </ng-container>
+          </div>
+          <div class="item-actions">
+            <div class="item-quantity-control">
+              <div class="item-quantity-label">Cantidad:</div>
+              <div class="item-quantity-buttons">
+                <button
+                  class="item-action minus"
+                  (click)="itemQuantity = itemQuantity - 1"
+                  [disabled]="itemQuantity === 0"
+                ></button>
+                <div class="item-quantity">
+                  {{ itemQuantity }}
+                </div>
+                <button
+                  class="item-action plus"
+                  (click)="itemQuantity = itemQuantity + 1"
+                  [disabled]="itemQuantity === 99"
+                ></button>
+              </div>
+            </div>
+            <button
+              class="item-add"
+              (click)="addToCart()"
+              [disabled]="shouldDisableAddToCart()"
+            >
+              <span>Add </span>
+              <span style="font-weight: 700">{{ itemQuantity }}</span>
+              <span> item{{ itemQuantity > 1 ? "s" : "" }} </span>
+              <span> to cart</span>
+              <span> • </span>
+              <span>{{
+                getCorrectVal(totalTimesQuantity) | currency : currencyType
+              }}</span>
+            </button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  div.food-modal-container {
+    position: fixed;
+    inset: 0;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  div.food-modal-area {
+    display: flex;
+    justify-content: center;
+    height: 1200px;
+    background-color: rgba(27, 27, 27, 0.8);
+    pointer-events: all;
+    overflow-y: auto;
+    padding: 100px 0;
+    padding-bottom: 160px;
+  }
+
+  div.food-modal {
+    position: sticky;
+    height: fit-content;
+    width: 1050px;
+    pointer-events: all;
+    background-color: #eeeeee;
+
+    border-radius: 10px;
+    display: flex;
+
+    display: flex;
+    flex-direction: column;
+
+    & div.item-header {
+      display: flex;
+      justify-content: end;
+      padding: 16px;
+      padding-bottom: 0;
+    }
+
+    & div.item-main {
+      display: flex;
+      gap: 24px;
+      padding: 32px;
+      padding-top: 24px;
+
+      & div.item-image {
+        min-width: 480px;
+        height: 480px;
+        overflow: hidden;
+
+        &:hover img {
+          transform: scale(1.05);
+        }
+
+        & img {
+          width: 480px;
+          height: 480px;
+          object-fit: cover;
+          object-position: center;
+          mix-blend-mode: multiply;
+          transition: transform 0.2s;
+        }
+      }
+
+      & div.item {
+        display: flex;
+        flex-direction: column;
+        width: 100%;
+        gap: 32px;
+
+        & div.item-info {
+          display: flex;
+          flex-direction: column;
+          gap: 4px;
+
+          & div.item-name {
+            font-size: 28px;
+            line-height: 36px;
+            font-weight: 700;
+          }
+
+          & div.item-price {
+            font-size: 18px;
+            line-height: 24px;
+            color: rgb(35, 35, 35);
+          }
+
+          & div.item-description {
+            font-size: 14px;
+            line-height: 22px;
+            margin-top: 8px;
+          }
+        }
+
+        & div.item-options {
+          display: flex;
+          flex-direction: column;
+
+          & div.section {
+            border-top: 2px solid #939393;
+            padding: 18px 0;
+            padding-bottom: 0;
+
+            & div.section-title {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+
+              & span.section-name {
+                font-size: 22px;
+                line-height: 30px;
+                font-weight: 700;
+              }
+
+              & span.section-required {
+                padding: 8px 12px;
+                border-radius: 10px;
+                background-color: rgb(201, 201, 201);
+              }
+            }
+          }
+
+          & div.section-quantity {
+            margin-top: 8px;
+          }
+
+          & div.section-options {
+            display: flex;
+            flex-direction: column;
+            margin: 8px 0;
+            margin-bottom: 0;
+
+            & div.section-option {
+              display: flex;
+              justify-content: space-between;
+              align-items: center;
+              border-top: 1px solid #939393;
+              min-height: 70px;
+
+              &:first-of-type {
+                margin-top: 12px;
+              }
+
+              & div.option {
+                display: flex;
+                flex-direction: column;
+                gap: 6px;
+              }
+            }
+          }
+        }
+
+        & div.item-actions {
+          display: flex;
+          flex-direction: column;
+          align-items: end;
+
+          & div.item-quantity-control {
+            display: flex;
+            align-items: center;
+            gap: 40px;
+            padding: 20px 0;
+            padding-top: 0;
+            justify-content: space-between;
+            width: 100%;
+
+            & div.item-quantity-label {
+              font-size: 22px;
+              line-height: 30px;
+              font-weight: 700;
+            }
+
+            & div.item-quantity-buttons {
+              display: flex;
+              align-items: center;
+              gap: 16px;
+
+              & div.item-quantity {
+                margin-top: 4px;
+                font-size: 24px;
+                font-weight: 700;
+                min-width: 40px;
+                text-align: center;
+                font-variant-numeric: tabular-nums;
+              }
+            }
+          }
+        }
+      }
+    }
+  }
+
+  button.close-button {
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid gray;
+
+    &:hover {
+      background-color: #b32b0c;
+      border: 2px solid #8b220a;
+      color: white;
+    }
+
+    &:disabled {
+      background-color: rgb(162, 162, 162);
+      cursor: default;
+    }
+
+    & i {
+      pointer-events: none;
+    }
+  }
+
+  button.item-action {
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid gray;
+
+    &:hover:not(:disabled) {
+      background-color: #004c87;
+      border: 2px solid #004c87;
+    }
+
+    &:disabled {
+      background-color: rgb(184, 184, 184);
+      cursor: default;
+    }
+  }
+
+  button.plus {
+    background: linear-gradient(#212121 0 0), linear-gradient(#212121 0 0),
+      rgb(238, 238, 238);
+    background-position: center;
+    background-size: 50% 2px, 2px 50%; /*thickness = 2px, length = 50% (25px)*/
+    background-repeat: no-repeat;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(#ffffff 0 0), linear-gradient(#ffffff 0 0),
+        #01528f;
+      background-position: center;
+      background-size: 50% 2px, 2px 50%; /*thickness = 2px, length = 50% (25px)*/
+      background-repeat: no-repeat;
+    }
+  }
+
+  button.minus {
+    background: linear-gradient(#212121 0 0), rgb(238, 238, 238);
+    background-position: center;
+    background-size: 50% 2px, 2px 50%; /*thickness = 2px, length = 50% (25px)*/
+    background-repeat: no-repeat;
+
+    &:hover:not(:disabled) {
+      background: linear-gradient(#ffffff 0 0), #01528f;
+      background-position: center;
+      background-size: 50% 2px, 2px 50%; /*thickness = 2px, length = 50% (25px)*/
+      background-repeat: no-repeat;
+    }
+  }
+
+  button.item-add {
+    background-color: #01528f;
+    color: white;
+    padding: 24px;
+    border-radius: 5px;
+    transition: all 200ms;
+    cursor: pointer;
+    min-width: 95px;
+    font-size: 16px;
+    line-height: 20px;
+    width: 100%;
+
+    &:hover {
+      background-color: #212020;
+    }
+
+    &:disabled {
+      cursor: default;
+      background-color: #004174;
+      color: rgb(154, 154, 154);
+    }
+  }
+
+  /* Radio button style */
+  input[type="radio"] {
+    /* Hide the default radio button */
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Create a custom radio button */
+    width: 28px;
+    height: 28px;
+    border-radius: 50%;
+    border: 2px solid gray;
+    outline: none;
+    cursor: pointer;
+    background-color: rgb(238, 238, 238);
+  }
+
+  /* Radio button checked state */
+  input[type="radio"]:checked {
+    border: 2px solid #004e89;
+    background-color: #0065b3;
+  }
+
+  /* Checkbox style */
+  input[type="checkbox"] {
+    /* Hide the default checkbox */
+    background-color: rgb(238, 238, 238);
+    appearance: none;
+    -webkit-appearance: none;
+    -moz-appearance: none;
+    /* Create a custom checkbox */
+    width: 28px;
+    height: 28px;
+    border: 2px solid gray;
+    outline: none;
+    cursor: pointer;
+  }
+
+  /* Checkbox checked state */
+  input[type="checkbox"]:checked {
+    border: 2px solid #004e89;
+    background-color: #0065b3;
+  }
+
+  input[type="checkbox"]:disabled {
+    background-color: rgb(197, 197, 197);
+    cursor: default;
+  }
+</style>

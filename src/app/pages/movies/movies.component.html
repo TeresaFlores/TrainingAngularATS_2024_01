@@ -1,0 +1,232 @@
+<div class="movies-container">
+  <div class="movies">
+    <div class="title">
+      <h1>Movies</h1>
+      <p>
+        Browse the latest movies out now and movies coming soon to Cinépolis
+        USA.
+      </p>
+    </div>
+    <div class="films">
+      <div class="films-tabs">
+        <a
+          href="/movies#released"
+          class="tab"
+          [class.active]="isReleasedActive"
+        >
+          Now Playing
+        </a>
+        <div class="divider"></div>
+        <a
+          href="/movies#upcoming"
+          class="tab"
+          [class.active]="isUpcomingActive"
+        >
+          Coming Soon
+        </a>
+      </div>
+      <div class="films-list">
+        <ng-container *ngFor="let movie of movies">
+          <a
+            class="film"
+            [title]="movie.name"
+            [routerLink]="['/movies', movie.name | hyphenizy]"
+          >
+            <div class="film-image">
+              <img [src]="movie.media.poster" alt="" />
+            </div>
+            <span>
+              {{ movie.name }}
+            </span>
+            <div class="film-go">
+              <div class="triangle"></div>
+            </div>
+          </a>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  div.movies-container {
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  div.movies {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    width: 1440px;
+    margin: auto;
+    margin-bottom: 200px;
+  }
+
+  div.title {
+    margin: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 60px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  div.films {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  div.films-actions {
+    display: flex;
+    gap: 20px;
+    align-items: center;
+    justify-content: space-between;
+  }
+
+  div.films-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  div.films-tabs {
+    display: flex;
+    justify-content: center;
+    gap: 32px;
+  }
+
+  div.tab-container {
+    padding: 0 16px;
+  }
+
+  div.divider {
+    min-width: 1px;
+    background-color: #212020;
+  }
+
+  a.tab {
+    display: block;
+    font-size: 24px;
+    line-height: 28px;
+    padding: 8px 0;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid transparent;
+    text-decoration: none;
+    min-width: 180px;
+    text-align: center;
+    color: black;
+
+    &.active {
+      border-bottom-color: #212020;
+    }
+
+    &:visited {
+      color: black;
+    }
+
+    &:hover {
+      color: #3c3a3a;
+
+      &.active {
+        border-bottom-color: #545151;
+      }
+    }
+  }
+
+  a.film {
+    position: relative;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    word-break: break-all;
+    gap: 20px;
+    width: 336px;
+    height: 540px;
+    font-size: 24px;
+    line-height: 28px;
+    overflow: hidden;
+    margin-bottom: 24px;
+    color: black;
+    text-decoration: none;
+
+    &:hover {
+      & img {
+        transform: scale(1.1);
+      }
+
+      & span {
+        text-decoration: underline;
+      }
+    }
+  }
+
+  div.film-go {
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    position: absolute;
+    width: 50px;
+    height: 50px;
+    top: 16px;
+    right: 16px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid #01528f;
+    background-color: #01528f;
+    transition: all 200ms;
+
+    &:hover {
+      border: 2px solid #212020;
+      background-color: #212020;
+      & div.triangle {
+        border-color: transparent transparent transparent white;
+      }
+    }
+  }
+
+  div.triangle {
+    width: 0px;
+    height: 0px;
+    margin-left: 4px;
+    border-style: solid;
+    border-width: 10px 0 10px 18px;
+    border-color: transparent transparent transparent white;
+    transform: rotate(0deg);
+  }
+
+  div.film-image {
+    border-radius: 10px;
+    overflow: hidden;
+  }
+
+  img {
+    width: 336px;
+    height: 540px;
+    object-fit: cover;
+    pointer-events: none;
+    transition: transform 0.2s;
+    object-position: center;
+  }
+
+  span {
+    width: 100%;
+    text-overflow: ellipsis;
+    overflow: hidden;
+    white-space: nowrap;
+    text-align: center;
+  }
+</style>

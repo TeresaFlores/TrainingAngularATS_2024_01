@@ -1,0 +1,272 @@
+<div class="movie-container">
+  <div class="movie">
+    <a class="return-link" routerLink="/movies"> Return to movies </a>
+    <div class="movie-content">
+      <div class="image">
+        <img [src]="movie?.media?.poster" alt="" />
+      </div>
+      <div class="info">
+        <h1 class="title">
+          {{ movie?.name }}
+        </h1>
+        <div class="meta-inline">
+          <span>{{ movie?.meta?.rating || "-" }}</span>
+          <span> • </span>
+          <span> {{ movie?.meta?.length || "-" }}</span>
+          <span> • </span>
+          <span> {{ movie?.meta?.releaseDate || "-" }} </span>
+        </div>
+
+        <div class="description">
+          {{ movie?.description }}
+        </div>
+
+        <div class="showtimes">
+          <ng-template [ngIf]="movie?.status === 'released'">
+            <div class="days">
+              <button
+                class="day"
+                [class.active]="day.isActive"
+                *ngFor="let day of screeningDays"
+                (click)="changeActiveDay(day)"
+              >
+                {{ day.formatted }}
+              </button>
+            </div>
+            <div class="screenings">
+              <div class="screening" *ngFor="let screening of screeningTimes">
+                <div class="location">{{ screening.location }}</div>
+                <div class="date">{{ screening.day }}</div>
+                <div class="format">{{ screening.movieFormat }}</div>
+                <div class="screening-time">
+                  <button
+                    class="time"
+                    *ngFor="let date of screening.dates"
+                    (click)="selectScreening(movie, screening, date)"
+                  >
+                    {{ date.time }}
+                  </button>
+                </div>
+              </div>
+            </div>
+          </ng-template>
+
+          <ng-template [ngIf]="movie?.status === 'upcoming'">
+            <div class="coming-soon">Coming Soon!</div>
+          </ng-template>
+        </div>
+      </div>
+      <div class="meta">
+        <div class="meta-line">
+          <span class="meta-name">Genre: </span>
+          <span class="meta-value">{{ movie?.meta?.genre || "-" }}</span>
+        </div>
+        <div class="meta-line">
+          <span class="meta-name">Director: </span>
+          <span class="meta-value">{{ movie?.meta?.director || "-" }}</span>
+        </div>
+        <div class="meta-line">
+          <span class="meta-name">Cast: </span>
+          <span class="meta-value">{{ movie?.meta?.cast || "-" }}</span>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  div.movie-container {
+    width: 100%;
+    height: 100%;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    overflow-y: auto;
+  }
+
+  div.movie {
+    width: 1440px;
+    display: flex;
+    flex-direction: column;
+    margin: auto;
+    margin-top: 60px;
+    margin-bottom: 240px;
+  }
+
+  div.movie-content {
+    width: 100%;
+    display: flex;
+    gap: 32px;
+  }
+
+  a.return-link {
+    display: block;
+    font-size: 24px;
+    line-height: 28px;
+    padding: 8px 0;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid #212020;
+    text-decoration: none;
+    min-width: 180px;
+    text-align: center;
+    color: black;
+    background-color: transparent;
+    width: fit-content;
+
+    &:hover {
+      color: #3c3a3a;
+      border-bottom-color: #545151;
+    }
+  }
+
+  div.movie {
+    display: flex;
+    gap: 32px;
+  }
+
+  div.image {
+    border-radius: 10px;
+  }
+
+  div.info {
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  div.meta-inline span {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  div.meta {
+    margin-top: 100px;
+    display: flex;
+    flex-direction: column;
+    min-width: 320px;
+    font-size: 20px;
+  }
+
+  span.meta-name {
+    font-weight: 700;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  span.meta-value {
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  div.description {
+    margin-top: 24px;
+    font-size: 16px;
+    line-height: 28px;
+  }
+
+  div.coming-soon {
+    font-size: 24px;
+    line-height: 32px;
+    font-weight: 700;
+    text-align: center;
+  }
+
+  div.showtimes {
+    border-radius: 10px;
+    background-color: #dfdfdf;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+    padding: 32px 24px;
+    margin-top: 24px;
+  }
+
+  div.days {
+    display: flex;
+    margin: auto;
+    gap: 16px;
+  }
+
+  button.day {
+    padding: 14px;
+    color: black;
+    border: 3px solid gray;
+    font-size: 20px;
+    line-height: 24px;
+    font-weight: 700;
+    border-radius: 10px;
+    cursor: pointer;
+    min-width: 124px;
+    text-align: center;
+
+    &:hover {
+      border: 3px solid rgb(63, 126, 160);
+    }
+
+    &.active {
+      border: 3px solid #212020;
+      background-color: #212020;
+      color: white;
+    }
+  }
+
+  div.screenings {
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  div.screening {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+
+    & div.location,
+    & div.date,
+    & div.format {
+      font-size: 20px;
+      line-height: 28px;
+    }
+  }
+
+  div.screening-time {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 8px;
+  }
+
+  button.time {
+    background-color: #01528f;
+    color: white;
+    padding: 12px;
+    border-radius: 5px;
+    transition: all 200ms;
+    cursor: pointer;
+    min-width: 95px;
+
+    &:hover {
+      background-color: #212020;
+    }
+  }
+
+  h1.title {
+    display: flex;
+    flex-direction: column;
+    gap: 40px;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 60px;
+    font-weight: 700;
+  }
+
+  img {
+    width: 320px;
+    object-fit: cover;
+    object-position: center;
+    border-radius: 10px;
+  }
+</style>

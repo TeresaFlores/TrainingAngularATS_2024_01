@@ -1,0 +1,174 @@
+<div class="food-container">
+  <div class="food">
+    <div class="title">
+      <h1>Food</h1>
+      <p>Browse some delicious, but quite expensive food choices.</p>
+    </div>
+    <div class="items">
+      <div class="item-category" *ngFor="let foodCategory of foods">
+        <div class="category-title">
+          {{ foodCategory.title }}
+        </div>
+        <div class="item-list">
+          <div
+            class="item"
+            *ngFor="let item of foodCategory.items"
+            (click)="selectItem(item)"
+          >
+            <div class="item-info">
+              <span class="item-name">{{ item.name }}</span>
+              <span class="item-description">{{ item.description }}</span>
+              <span *ngIf="item.addon">{{ item.addon }}</span>
+            </div>
+            <div class="item-image">
+              <img [src]="item.image" alt="" />
+            </div>
+            <button class="item-action"></button>
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<ng-container *ngIf="selectedItem">
+  <app-food-modal
+    [selectedItem]="selectedItem"
+    (closeEvent)="clearItemSelected()"
+  ></app-food-modal>
+</ng-container>
+
+<style>
+  div.food-container {
+    width: 100%;
+    height: 100%;
+    overflow-y: auto;
+  }
+
+  div.food {
+    width: 1120px;
+    margin: auto;
+    margin-bottom: 240px;
+  }
+
+  div.title {
+    margin: 80px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 60px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  div.items {
+    display: flex;
+    flex-direction: column;
+    gap: 56px;
+  }
+
+  div.item-category {
+    display: flex;
+    flex-direction: column;
+    gap: 24px;
+  }
+
+  div.category-title {
+    font-size: 24px;
+    line-height: 28px;
+    padding: 8px 16px;
+    border-top: 2px solid transparent;
+    border-bottom: 2px solid #212020;
+  }
+
+  div.item-list {
+    display: flex;
+    flex-wrap: wrap;
+    gap: 32px;
+  }
+
+  div.item {
+    display: flex;
+    width: 544px;
+    border: 1px solid #b4b4b4;
+    position: relative;
+    border-radius: 10px;
+    cursor: pointer;
+
+    &:hover img {
+      transform: scale(1.15);
+    }
+  }
+
+  button.item-action {
+    position: absolute;
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid gray;
+
+    background: linear-gradient(#212121 0 0), linear-gradient(#212121 0 0),
+      rgb(228, 228, 228);
+    background-position: center;
+    background-size: 50% 2px, 2px 50%; /*thickness = 2px, length = 50% (25px)*/
+    background-repeat: no-repeat;
+
+    &:hover {
+      background: linear-gradient(#ffffff 0 0), linear-gradient(#ffffff 0 0),
+        rgb(0, 76, 135);
+      background-position: center;
+      background-size: 50% 2px, 2px 50%; /*thickness = 2px, length = 50% (25px)*/
+      background-repeat: no-repeat;
+      border: 2px solid #004c87;
+    }
+  }
+
+  span.item-name {
+    font-size: 18px;
+    line-height: 24px;
+    font-weight: 700;
+  }
+
+  span.item-description {
+    font-size: 16px;
+    line-height: 24px;
+  }
+
+  div.item-info {
+    padding: 18px 16px;
+    display: flex;
+    flex-direction: column;
+    gap: 12px;
+    border-right: 1px solid #b4b4b4;
+    flex-grow: 1;
+  }
+
+  div.item-image {
+    min-width: 200px;
+    height: 180px;
+    overflow: hidden;
+  }
+
+  img {
+    width: 200px;
+    height: 180px;
+    object-fit: cover;
+    pointer-events: none;
+    transition: transform 0.2s;
+    object-position: center;
+    mix-blend-mode: multiply;
+  }
+</style>

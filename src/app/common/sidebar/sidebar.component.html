@@ -1,0 +1,178 @@
+<ng-container *ngIf="showCart">
+  <div class="sidebar-container">
+    <div class="sidebar">
+      <div class="cart-total">
+        <span class="total-label"> Subtotal </span>
+        <span class="total-number">{{
+          getCorrectVal(cartTotal) | currency : currencyType
+        }}</span>
+      </div>
+      <div class="cart-purchase">
+        <button class="cart-button" (click)="completeCartPurchase($event)">
+          Complete purchase
+        </button>
+      </div>
+      <div class="cart-items">
+        <ng-container *ngFor="let item of items">
+          <div class="item">
+            <div class="item-image">
+              <img [src]="item.image" alt="item-in-cart" />
+            </div>
+            <div class="item-price">
+              {{ getCorrectVal(item.totalPrice) | currency : currencyType }}
+            </div>
+            <button class="item-delete" (click)="deleteItem(item)">
+              <i class="fa fa-trash-o" style="font-size: 24px"></i>
+            </button>
+          </div>
+        </ng-container>
+      </div>
+    </div>
+  </div>
+</ng-container>
+<ng-container *ngIf="showModal">
+  <app-purchase-completed (closeEvent)="closeModal()"> </app-purchase-completed>
+</ng-container>
+
+<style>
+  div.sidebar-container {
+    width: 200px;
+    height: 100vh;
+  }
+
+  div.sidebar {
+    display: flex;
+    flex-direction: column;
+    background-color: #222222;
+    width: 100%;
+    color: white;
+    height: 100%;
+
+    & div.cart-total {
+      width: 100%;
+      min-height: 140px;
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      justify-content: center;
+      gap: 12px;
+
+      & span {
+        font-size: 24px;
+
+        &.total-number {
+          font-size: 20px;
+          font-weight: 700;
+          word-break: break-all;
+          max-width: 160px;
+          text-align: center;
+        }
+      }
+    }
+
+    & div.cart-purchase {
+      display: flex;
+      justify-content: center;
+      margin: 32px 0;
+      margin-top: 0;
+    }
+
+    & div.cart-items {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      gap: 16px;
+      height: 100%;
+      overflow-y: auto;
+      padding-bottom: 20px;
+
+      & div.item {
+        position: relative;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        border-radius: 10px;
+        gap: 4px;
+
+        & div.item-image {
+          min-width: 140px;
+          height: 160px;
+          border-radius: 10px;
+          overflow: hidden;
+          background-color: rgb(227, 227, 227);
+        }
+
+        &:hover img {
+          transform: scale(1.1);
+        }
+
+        & div.item-price {
+          font-size: 16px;
+          line-height: 24px;
+          margin-top: 12px;
+        }
+
+        & button {
+          position: absolute;
+          top: 6px;
+          right: 6px;
+        }
+      }
+    }
+  }
+
+  button.cart-button {
+    background-color: #01528f;
+    color: white;
+    padding: 12px;
+    padding-top: 14px;
+    border-radius: 5px;
+    transition: all 200ms;
+    cursor: pointer;
+    min-width: 95px;
+    font-size: 16px;
+    line-height: 22px;
+    width: 140px;
+
+    &:hover {
+      background-color: #003d6b;
+    }
+
+    &:disabled {
+      cursor: default;
+      background-color: #004174;
+      color: gray;
+    }
+  }
+
+  button.item-delete {
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid gray;
+
+    &:hover {
+      background-color: #b32b0c;
+      border: 2px solid #8b220a;
+      color: white;
+    }
+
+    &:disabled {
+      background-color: rgb(162, 162, 162);
+      cursor: default;
+    }
+  }
+
+  img {
+    width: 140px;
+    height: 160px;
+    object-fit: cover;
+    pointer-events: none;
+    transition: transform 0.2s;
+    object-position: center;
+    mix-blend-mode: multiply;
+  }
+</style>

@@ -1,0 +1,267 @@
+<div class="modal-container">
+  <div id="modal-area" class="modal-area" (click)="closeModal($event)">
+    <div class="summary-modal">
+      <div class="summary-header">
+        <button
+          class="close-button"
+          id="close-button"
+          (click)="closeModal($event)"
+        >
+          <i class="fa fa-times" style="font-size: 24px"></i>
+        </button>
+      </div>
+      <div class="summary">
+        <div class="summary-title">Your summary</div>
+        <div class="summary-info">
+          <div class="movie-image">
+            <img [src]="selectedMovie?.media?.poster" alt="movie-poster" />
+          </div>
+          <div class="movie-info">
+            <div class="movie-title">{{ selectedMovie?.name }}</div>
+            <div class="movie-data">
+              <span>{{ selectedMovie?.meta?.rating || "-" }}</span>
+              <span> • </span>
+              <span> {{ selectedMovie?.meta?.length || "-" }}</span>
+            </div>
+            <div class="movie-at">
+              <span class="bold">At: </span>
+              <span>
+                {{ selectedScreening?.screening?.location }} -
+                {{ selectedScreening?.screening?.screen }}
+              </span>
+            </div>
+            <div class="movie-on">
+              <span class="bold">On: </span>
+              <span>
+                {{ selectedScreening?.screening?.day }} -
+                {{ selectedScreening?.screeningDate?.time }}
+              </span>
+            </div>
+          </div>
+        </div>
+        <div class="summary-seats">
+          <span>Your seats: </span>
+          <div class="summary-selected-seats">
+            <span *ngFor="let selectedSeat of selectedSeats; index as i">
+              {{
+                selectedSeat.rowLetter.toUpperCase() + selectedSeat.seatNumber
+              }}
+              {{ i !== selectedSeats.length - 1 ? "-" : "" }}
+            </span>
+            <ng-container *ngIf="selectedSeats.length === 0">
+              <span> - </span>
+            </ng-container>
+          </div>
+        </div>
+        <div class="summary-total">
+          <span>TOTAL: </span>
+          <span>{{ getTotalPrice() | currency : currencyType }}</span>
+        </div>
+        <div class="summary-qr">
+          <span>Here's your QR code</span>
+          <div class="qr-container">
+            <img
+              src="https://upload.wikimedia.org/wikipedia/commons/thumb/b/b8/Qr-1.svg/220px-Qr-1.svg.png"
+              alt="qr-code"
+            />
+          </div>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
+
+<style>
+  div.modal-container {
+    position: fixed;
+    inset: 0;
+    background-color: transparent;
+    pointer-events: none;
+    z-index: 10;
+  }
+
+  div.modal-area {
+    display: flex;
+    justify-content: center;
+    height: 1200px;
+    background-color: rgba(27, 27, 27, 0.8);
+    pointer-events: all;
+    overflow-y: auto;
+    padding: 100px 0;
+    padding-bottom: 160px;
+  }
+
+  div.summary-modal {
+    display: flex;
+    flex-direction: column;
+    background-color: #dfdfdf;
+    border-radius: 10px;
+  }
+
+  div.summary-header {
+    display: flex;
+    justify-content: end;
+    padding: 16px;
+    padding-bottom: 0;
+    width: 100%;
+  }
+
+  div.summary {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 16px;
+    width: 600px;
+    background-color: #dfdfdf;
+    padding: 0 24px;
+
+    & div.summary-title {
+      text-align: center;
+      font-size: 24px;
+      line-height: 30px;
+      font-weight: 700;
+      padding: 34px;
+      padding-top: 0;
+      width: 100%;
+      border-bottom: 2px solid #939393;
+    }
+
+    & div.summary-info {
+      display: flex;
+      justify-content: center;
+      width: 100%;
+      gap: 16px;
+      padding: 8px;
+
+      & div.movie-image {
+        min-width: 140px;
+        overflow: hidden;
+        border-radius: 10px;
+
+        & img {
+          width: 140px;
+          object-fit: cover;
+          object-position: center;
+          border-radius: 10px;
+        }
+      }
+
+      & div.movie-info {
+        margin-top: 12px;
+        display: flex;
+        flex-direction: column;
+        gap: 8px;
+        width: 100%;
+        overflow: hidden;
+        border-radius: 10px;
+
+        & div.movie-title {
+          font-size: 20px;
+          line-height: 28px;
+          font-weight: 700;
+        }
+
+        & div.movie-data {
+          font-size: 14px;
+          line-height: 18px;
+          margin-bottom: 12px;
+        }
+
+        & div.movie-at,
+        div.movie-on {
+          font-size: 16px;
+          line-height: 24px;
+
+          & span.bold {
+            font-weight: 700;
+          }
+        }
+      }
+    }
+
+    & div.summary-seats {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 16px 8px;
+      padding-top: 18px;
+      border-top: 2px solid #939393;
+      border-bottom: 2px solid #939393;
+
+      & span {
+        font-size: 16px;
+        line-height: 24px;
+      }
+
+      & div.summary-selected-seats {
+        max-width: 340px;
+      }
+    }
+
+    & div.summary-total {
+      display: flex;
+      justify-content: space-between;
+      width: 100%;
+      padding: 12px 8px;
+
+      & span {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+      }
+    }
+
+    & div.summary-qr {
+      display: flex;
+      flex-direction: column;
+      align-items: center;
+      margin-top: 60px;
+      margin-bottom: 20px;
+      gap: 16px;
+
+      & span {
+        font-weight: 700;
+        font-size: 24px;
+        line-height: 32px;
+      }
+
+      & div.qr-container {
+        width: 300px;
+        height: 300px;
+        overflow: hidden;
+
+        & img {
+          width: 300px;
+          height: 300px;
+          object-fit: cover;
+          object-position: center;
+        }
+      }
+    }
+  }
+
+  button.close-button {
+    width: 40px;
+    height: 40px;
+    bottom: 10px;
+    right: 10px;
+    border-radius: 50%;
+    cursor: pointer;
+    border: 2px solid gray;
+
+    &:hover {
+      background-color: #b32b0c;
+      border: 2px solid #8b220a;
+      color: white;
+    }
+
+    &:disabled {
+      background-color: rgb(162, 162, 162);
+      cursor: default;
+    }
+
+    & i {
+      pointer-events: none;
+    }
+  }
+</style>

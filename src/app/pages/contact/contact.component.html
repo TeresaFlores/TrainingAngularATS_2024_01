@@ -1,0 +1,144 @@
+<div class="contact-container">
+  <div class="contact">
+    <div class="title">
+      <h1>Contact Us</h1>
+      <p>Send stuff, won't read it tho</p>
+    </div>
+    <form [formGroup]="myForm" (ngSubmit)="onSubmit()">
+      <label>
+        <div>Name:</div>
+        <input type="text" formControlName="name" />
+        <span class="error" *ngIf="nameControlHasError('required')">
+          Name is required
+        </span>
+        <span class="error" *ngIf="nameControlHasError('firstLetterCap')">
+          Name must start with capital letter and be in lowercase thereafter
+        </span>
+      </label>
+
+      <label>
+        <div>Email <span class="required">(required)</span>:</div>
+        <input type="email" formControlName="email" />
+        <span class="error" *ngIf="emailControlHasError('required')">
+          Email is required
+        </span>
+        <span class="error" *ngIf="emailControlHasError('email')">
+          Invalid email format
+        </span>
+      </label>
+      <label>
+        <div>Stuff:</div>
+        <textarea formControlName="stuff" cols="30" rows="10"></textarea>
+        <span class="error" *ngIf="stuffControlHasError('required')">
+          Stuff is required
+        </span>
+        <span class="error" *ngIf="stuffControlHasError('allCaps')">
+          Stuff must be in all capital letters
+        </span>
+      </label>
+
+      <button type="submit">Send stuff</button>
+    </form>
+  </div>
+</div>
+
+<style>
+  div.movies-container {
+    width: 100%;
+    overflow-y: auto;
+    height: 100%;
+  }
+
+  div.contact {
+    width: 600px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    margin: auto;
+    margin-bottom: 240px;
+  }
+
+  div.title {
+    margin: 80px;
+    margin-bottom: 70px;
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    gap: 40px;
+  }
+
+  h1 {
+    font-size: 48px;
+    line-height: 60px;
+    text-transform: uppercase;
+    font-weight: 500;
+  }
+
+  p {
+    font-size: 16px;
+    line-height: 20px;
+  }
+
+  form {
+    width: 100%;
+    display: flex;
+    flex-direction: column;
+    gap: 32px;
+  }
+
+  label {
+    display: flex;
+    flex-direction: column;
+    gap: 8px;
+    width: 100%;
+
+    & div {
+      font-size: 20px;
+      line-height: 28px;
+
+      & span.required {
+        font-size: 14px;
+      }
+    }
+  }
+
+  input {
+    height: 48px;
+    padding: 16px;
+    font-size: 20px;
+  }
+
+  textarea {
+    padding: 16px;
+    font-size: 20px;
+    resize: none;
+    height: 220px;
+  }
+
+  button {
+    background-color: #01528f;
+    color: white;
+    padding: 24px;
+    border-radius: 5px;
+    transition: all 200ms;
+    cursor: pointer;
+    min-width: 95px;
+    font-size: 20px;
+    width: 100%;
+
+    &:hover {
+      background-color: #212020;
+    }
+
+    &:disabled {
+      cursor: default;
+      background-color: #004174;
+      color: rgb(154, 154, 154);
+    }
+  }
+
+  span.error {
+    margin-top: 6px;
+    color: rgb(205, 74, 51);
+  }
+</style>
