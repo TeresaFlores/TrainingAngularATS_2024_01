@@ -1,37 +1,23 @@
 <div *ngIf="peliculaInfo$ | async" class="card w-75 mb-3 mx-auto">
   <div class="card-header">
-    <app-titulo classes="fs-3" [texto]="(peliculaInfo$ | async).nombre">
-    </app-titulo>
+    <app-titulo
+      classes="fs-3"
+      [texto]="(peliculaInfo$ | async).nombre"
+    ></app-titulo>
   </div>
   <div class="card-body">
-    <div class="col-md-5 mx-auto">
-      <img
-        [src]="(peliculaInfo$ | async).img"
-        class="img-thumbnail"
-        alt="..."
-      />
-    </div>
-    <div class="accordion col-10 mx-auto mt-3" id="accordionExample">
-      <div class="accordion-item">
-        <h2 class="accordion-header">
-          <button
-            class="accordion-button collapsed"
-            type="button"
-            data-bs-toggle="collapse"
-            data-bs-target="#collapseOne"
-            aria-controls="collapseOne"
-          >
-            Sinopsis
-          </button>
-        </h2>
-        <div
-          id="collapseOne"
-          class="accordion-collapse collapse"
-          data-bs-parent="#accordionExample"
-        >
-          <div class="accordion-body">
-            {{ (peliculaInfo$ | async).sinopsis }}
-          </div>
+    <div class="container">
+      <div class="row">
+        <div class="col-md-4">
+          <img
+            [src]="(peliculaInfo$ | async).img"
+            class="img-thumbnail"
+            alt="..."
+          />
+        </div>
+        <div class="col">
+          <app-titulo classes="fs-6 fw-bold" texto="Sinópsis:"></app-titulo>
+          <p class="mt-3">{{ (peliculaInfo$ | async).sinopsis }}</p>
         </div>
       </div>
     </div>
@@ -94,7 +80,7 @@
       <div class="row align-items-center mb-3">
         <button
           type="submit"
-          class="btn btn-primary "
+          class="btn btn-primary"
           [disabled]="!boletosForm.hasError('validacionPersonalizada')"
         >
           Comprar
