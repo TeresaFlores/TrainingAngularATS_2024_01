@@ -52,6 +52,8 @@
     <button
       [disabled]="!(listaCombos$ | async).length"
       class="btn btn-primary w-100 d-flex justify-content-center"
+      data-bs-dismiss="offcanvas"
+      (click)="cobrarCarrito()"
     >
       Pagar
       <span class="material-symbols-outlined mx-2">

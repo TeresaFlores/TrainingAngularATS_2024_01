@@ -1,8 +1,11 @@
-import { Observable, map, reduce } from 'rxjs';
-import { Component, OnChanges, OnInit, SimpleChanges } from '@angular/core';
+import { Observable, map } from 'rxjs';
+import { Component, OnInit } from '@angular/core';
 import { Store } from '@ngrx/store';
 import { AppState } from '@state/app.state';
 import { selectCombos } from '@state/selectors/carrito.selector';
+import { ToastService } from '@services/toast.service';
+import { pagarCarrito } from '@state/actions/carrito.actions';
+import { EventTypes } from '@core/models/toast.interface';
 
 @Component({
   selector: 'app-drawer',
@@ -13,7 +16,10 @@ export class DrawerComponent implements OnInit {
   listaCombos$: Observable<any> | null = new Observable();
   sumaTotal$: Observable<any> | null = new Observable();
 
-  constructor(private store: Store<AppState>) {}
+  constructor(
+    private toastService: ToastService,
+    private store: Store<AppState>
+  ) {}
 
   ngOnInit(): void {
     this.listaCombos$ = this.store.select(selectCombos);
@@ -25,5 +31,10 @@ export class DrawerComponent implements OnInit {
         totales.reduce((acc: number, valor: number) => acc + valor, 0)
       )
     );
+  }
+
+  cobrarCarrito() {
+    this.store.dispatch(pagarCarrito());
+    this.toastService.showToast(EventTypes.Success, 'Pago exitoso.');
   }
 }

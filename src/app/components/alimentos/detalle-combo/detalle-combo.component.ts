@@ -1,8 +1,9 @@
 import { Component, OnInit } from '@angular/core';
 import { ActivatedRoute, Router } from '@angular/router';
 import { ComboModel } from '@core/models/Alimentos.interface';
-import { CarritoCombosModel } from '@core/models/Carrito.interface';
+import { EventTypes } from '@core/models/toast.interface';
 import { Store } from '@ngrx/store';
+import { ToastService } from '@services/toast.service';
 import { agregarCombo } from '@state/actions/carrito.actions';
 import { AppState } from '@state/app.state';
 import { selectCombo } from '@state/selectors/alimentos.selector';
@@ -19,7 +20,11 @@ export class DetalleComboComponent implements OnInit {
   comboId: number | null = null;
   factor: number = 1;
 
-  constructor(private store: Store<AppState>, private route: ActivatedRoute) {}
+  constructor(
+    private toastService: ToastService,
+    private store: Store<AppState>,
+    private route: ActivatedRoute
+  ) {}
 
   ngOnInit(): void {
     this.route.paramMap.subscribe((params) => {
@@ -39,6 +44,6 @@ export class DetalleComboComponent implements OnInit {
     };
 
     this.store.dispatch(agregarCombo({ payload }));
+    this.toastService.showToast(EventTypes.Success, 'Agregado al carrito.');
   }
 }
-//selectCombo
