@@ -16,8 +16,8 @@ export class CardMovieComponent implements OnInit {
   }
 
   OnMovieDetails(movie: MovieResult){
-    console.log("movie: ", movie);
-    this.router.navigate(['/movies', movie.id])
+    this.router.navigate(['/movies/details'], { queryParams: { id: movie.id } })
+    
   }
 
 }

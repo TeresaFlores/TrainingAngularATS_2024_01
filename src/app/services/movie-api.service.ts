@@ -5,6 +5,7 @@ import { HttpClient } from '@angular/common/http';
 import { ServerAPIOptions } from '../interfaces/apiOptions.interfaces';
 import { map } from 'rxjs/operators';
 import { MovieTopRatedResult, TopRatedMovies } from '../interfaces/topRated.interface';
+import { MovieByIdResponse } from '../interfaces/movieById.interface';
 
 @Injectable({
   providedIn: 'root',
@@ -38,6 +39,15 @@ export class MovieApiService {
       this.serverOptions
     )
     .pipe(map((res) => res.results))
+    return response
+  }
+
+  getMovieById(movieId: any): Observable<MovieByIdResponse>{
+    const response = this.http
+    .get<MovieByIdResponse>(
+      `https://api.themoviedb.org/3/movie/${movieId}`,
+      this.serverOptions
+    ).pipe(map((res) => res))
     return response
   }
 }
