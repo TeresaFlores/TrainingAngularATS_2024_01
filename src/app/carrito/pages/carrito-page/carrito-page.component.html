@@ -1,0 +1,36 @@
+<div class="container">
+<h2>Carrito</h2>
+<p>El carrito está vacío</p>
+
+<ul>
+    <li *ngFor="let item of carrito">
+        {{item.nombre}} - {{item.precio | currency}}
+    </li>
+</ul>
+
+
+
+<div class="mt-4">
+   
+    <div class="row">
+        <div class="fs-2 fw-bold col">Total: </div>
+    <span class="fs-2 col">{{totalCarrito | currency}}</span>
+    </div>
+    <div class="row">
+        <div class="col">
+            <div ngbDropdown class="d-inline-block">
+                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                    Moneda
+                </button>
+                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                    <button ngbDropdownItem>Pesos</button>
+                    <button ngbDropdownItem>Dólares</button>
+                    <button ngbDropdownItem>Euros</button>
+                </div>
+            </div>
+        </div>
+        <button type="button" class="btn btn-primary col">Comprar</button>
+    </div>
+    
+</div>
+</div>

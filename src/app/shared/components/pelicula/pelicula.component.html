@@ -1,0 +1,11 @@
+<div class="card h-100 shadow-sm">
+    <img [src]="peliculaProps?.portada" class="card-img-top" [alt]="peliculaProps?.titulo">
+    <div class="card-body">
+        <h5 class="card-title">{{ peliculaProps?.titulo }}</h5>
+        <p class="card-text">{{ peliculaProps?.duracion }} . {{ peliculaProps?.genero }}</p>
+    </div>
+    <div class="card-footer text-center">
+        <a [routerLink]="['/boletos/pelicula/', peliculaProps?.id]" class="btn btn-primary">Comprar
+            Boletos</a>
+    </div>
+</div>

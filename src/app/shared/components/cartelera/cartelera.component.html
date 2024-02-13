@@ -1,0 +1,17 @@
+<div class="container">
+    <h2 class="text-center mb-4 fs-1 fw-semibold">Cartelera</h2>
+
+    <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+
+    <div *ngIf="!isLoading && peliculas?.length === 0; else cartelera" class="text-center alert alert-warning">
+        <p>No hay películas disponibles</p>
+    </div>
+
+    <ng-template #cartelera>
+        <div class="row row-cols-1 row-cols-md-3 g-4">
+            <div class="col" *ngFor="let pelicula of peliculas">
+                <shared-pelicula [peliculaProps]="pelicula"></shared-pelicula>
+            </div>
+        </div>
+    </ng-template>
+</div>

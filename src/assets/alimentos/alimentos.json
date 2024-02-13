@@ -1,0 +1,31 @@
+[
+    {
+        "id": "01",
+        "nombre": "Combo Cuates",
+        "precio": 257,
+        "descripcion": "1 palomitas para llevar (285 gr) y 2 refrescos jumbo (1.2 ltr).",
+        "imagen": "assets/alimentos/combo_cuates.png"
+
+    },
+    {
+        "id": "02",
+        "nombre": "Combo Nachos",
+        "precio": 248,
+        "descripcion": "1 palomitas para llevar (285 gr), 1 refresco jumbo (1.2 ltr), y 1 nachos clásicos chicos (120 gr).",
+        "imagen": "assets/alimentos/combo_nachos.png"
+    },
+    {
+        "id": "03",
+        "nombre": "Maxicombo Nachos",
+        "precio": 393,
+        "descripcion": "1 palomitas para llevar (285 gr), 2 refrescos jumbo (1.2 ltr) y 2 nachos clásicos chicos (120 gr).",
+        "imagen": "assets/alimentos/maxi_nachos.png"
+    },
+    {
+        "id": "04",
+        "nombre": "Maxicombo Familiar",
+        "precio": 460,
+        "descripcion": "3 refrescos tamaño jumbo (1.2 ltrs), 2 canastas de palomitas sabor mantequilla tamaño jumbo (203 gr) y 1 chocolates M&M’S® sabor cacahuate.",
+        "imagen": "assets/alimentos/maxi_familiar.png"
+    }
+]

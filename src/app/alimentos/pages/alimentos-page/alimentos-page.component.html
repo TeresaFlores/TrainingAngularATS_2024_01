@@ -1,0 +1,20 @@
+<div class="container">
+    <h2 class="text-center mb-4 fs-1 fw-semibold">Combos</h2>
+
+    <shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+
+    <div *ngIf="!isLoading && combos?.length === 0; else listaCombos" class="text-center alert alert-warning">
+        <p>Error al cargar combos.</p>
+    </div>
+
+    <ng-template #listaCombos>
+        <div class="row row-cols-1 row-cols-md-2 g-4">
+            <div class="col" *ngFor="let combo of combos">
+                <combo-component [comboProps]="combo"></combo-component>
+            </div>
+        </div>
+    </ng-template>
+
+</div>
+
+

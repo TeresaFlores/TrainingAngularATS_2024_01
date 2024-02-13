@@ -1,0 +1,61 @@
+    <div class="container">
+        <form [formGroup]="miFormulario" (ngSubmit)="onSave()" autocomete="off">
+            <div class="mb-3">
+                <label for="formNombre" class="form-label">Nombre</label>
+                <input 
+                    formControlName="nombre"
+                    type="text" class="form-control" id="formNombre" aria-describedby="emailHelp"
+                    [value]="miFormulario.controls['nombre'].value | titlecase">
+                <div 
+                *ngIf="miFormulario.controls['nombre'].getError('required') && miFormulario.controls['nombre'].touched"
+                class="form-text text-danger">
+                    Este campo es requerido.
+                </div>
+                <div 
+                *ngIf="miFormulario.controls['nombre'].getError('minlength') && miFormulario.controls['nombre'].touched"
+                class="form-text text-danger">
+                    El nombre debe tener un mínimo de tres letras.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="formCorreo" class="form-label">Correo</label>
+                <input 
+                formControlName="correo"
+                type="text" class="form-control" id="formCorreo">
+                <div 
+                *ngIf="miFormulario.controls['correo'].getError('required') && miFormulario.controls['correo'].touched"
+                class="form-text text-danger">
+                    Este campo es requerido.
+                </div>
+                <div 
+                *ngIf="miFormulario.controls['correo'].getError('email') && miFormulario.controls['correo'].touched"
+                class="form-text text-danger">
+                    Correo inválido.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="formAsunto" class="form-label">Asunto</label>
+                <input 
+                    formControlName="asunto"
+                    type="text" class="form-control" id="formAsunto" 
+                    [value]="miFormulario.controls['asunto'].value | uppercase">
+                <div 
+                *ngIf="miFormulario.controls['asunto'].getError('required') && miFormulario.controls['asunto'].touched"
+                class="form-text text-danger">
+                    Este campo es requerido.
+                </div>
+            </div>
+            <div class="mb-3">
+                <label for="formMensaje" class="form-label">Mensaje</label>
+                <textarea 
+                formControlName="mensaje"
+                class="form-control" id="formMensaje" rows="3"></textarea>
+                <div 
+                *ngIf="miFormulario.controls['mensaje'].getError('required') && miFormulario.controls['mensaje'].touched"
+                class="form-text text-danger">
+                    Este campo es requerido.
+                </div>
+              </div>
+            <button type="submit" class="btn btn-primary">Submit</button>
+        </form>
+    </div>

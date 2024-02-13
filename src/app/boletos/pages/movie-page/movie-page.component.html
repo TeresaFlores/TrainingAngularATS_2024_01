@@ -1,0 +1,35 @@
+<shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+
+<div *ngIf="!isLoading && !pelicula" class="text-center alert alert-warning">
+    <p>Pelicula no encontrada</p>
+</div>
+
+<div *ngIf="pelicula" class="container">
+    <h2 class="fs-1">{{ pelicula.titulo }}</h2>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <img [src]="pelicula.portada" [alt]="pelicula.titulo" class="img-fluid rounded-4">
+        </div>
+        <div class="col-12 col-md">
+            <h3 class="fs-3">Género</h3>
+            <p>{{ pelicula.genero }}</p>
+            <h3 class="fs-3">Duración</h3>
+            <p>{{ pelicula.duracion }}</p>
+            <h3 class="fs-3">Director</h3>
+            <p>{{ pelicula.director }}</p>
+            <h3 class="fs-3">Sinopsis</h3>
+            <p>{{ pelicula.sinopsis }}</p>
+
+            <h3 class="fs-3">Funciones</h3>
+            <div class="btn-group" role="group" aria-label="Basic radio toggle button group">
+                <ng-template ngFor let-funcion [ngForOf]="pelicula.funciones" let-i="index">
+                    <input type="radio" class="btn-check" name="btnradio" [id]="'btnradio'+(i+1)" autocomplete="off">
+                    <label class="btn btn-outline-primary" [for]="'btnradio'+(i+1)">{{funcion}}</label>
+                </ng-template>
+            </div>
+            <div class="mt-2">
+                <a [routerLink]="['/boletos/']" class="btn btn-primary" (click)="agregarPelicula(pelicula)">Agregar a Carrito</a>
+            </div>
+        </div>
+    </div>

@@ -1,0 +1,10 @@
+<div class="card h-100 shadow-sm">
+    <img [src]="comboProps?.imagen" class="card-img-top" [alt]="comboProps?.nombre">
+    <div class="card-body">
+        <h5 class="card-title">{{ comboProps?.nombre }}</h5>
+        <p class="card-text">{{ comboProps?.precio | currency }}</p>
+    </div>
+    <div class="card-footer text-center">
+        <a [routerLink]="['/alimentos/combo/', comboProps?.id]" class="btn btn-primary">Ver Detalle</a>
+    </div>
+</div>

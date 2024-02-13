@@ -1,0 +1,102 @@
+[
+    {
+        "id": "01",
+        "titulo": "Aquaman y El Reino Perdido",
+        "duracion": "127 min",
+        "genero": "Acción, Aventura",
+        "director": "James Wan",
+        "funciones": ["15:00", "17:30", "20:00", "22:30"],
+        "portada": "assets/peliculas/aquaman-y-el-reino-perdido.png",
+        "sinopsis": "Aquaman y el Reino Perdido es una película de superhéroes estadounidense basada en el personaje de DC Comics Aquaman, distribuida por Warner Bros. Pictures. Es la secuela de Aquaman (2018) y la decimocuarta película del Universo extendido de DC (DCEU). La película está dirigida por James Wan, quien coescribió el guion con David Leslie Johnson-McGoldrick y producida por Peter Safran y Wan. Jason Momoa repite su papel como Arthur Curry / Aquaman, junto a Amber Heard, Patrick Wilson, Dolph Lundgren, Yahya Abdul-Mateen II, Nicole Kidman y Temuera Morrison."
+    },
+    {
+        "id": "02",
+        "titulo": "74MICT Monster",
+        "duracion": "126 min",
+        "genero": "Drama",
+        "director": "Hirokazu Koreeda",
+        "funciones": ["14:00", "15:30", "19:00", "21:30"],
+        "portada": "assets/peliculas/74mict-monster.png",
+        "sinopsis": "74MIC Monster es una película de drama japonesa dirigida por Hirokazu Kore-eda. La película está protagonizada por Kōji Yakusho, Masami Nagasawa, Kōtarō Yoshida, Kōji Ōkura, y Kōji Yakusho. La película se estrenó en el Festival de Cine de Cannes de 2022, donde compitió por la Palma de Oro."
+    },
+    {
+        "id": "03",
+        "titulo": "Argylle: Agente Secreto",
+        "duracion": "140 min",
+        "genero": "Acción, Suspenso",
+        "director": "Matthew Vaughn",
+        "funciones": ["15:00", "17:30", "20:00", "22:30"],
+        "portada": "assets/peliculas/argylle-agente-secreto.png",
+        "sinopsis": "Argylle: Agente Secreto es una próxima película de acción y suspenso dirigida por Matthew Vaughn, a partir de un guion de Jason Fuchs. La película está protagonizada por Henry Cavill, Sam Rockwell, Bryce Dallas Howard, Bryan Cranston, Catherine O'Hara, John Cena, Dua Lipa, Ariana DeBose, Andy Garcia, y Samuel L. Jackson. La película está basada en la novela homónima de Ellie Conway."
+    },
+    {
+        "id": "04",
+        "titulo": "Priscilla",
+        "duracion": "113 min",
+        "genero": "Drama",
+        "director": "Sofia Coppola",
+        "funciones": ["14:00", "15:30", "19:00", "21:30"],
+        "portada": "assets/peliculas/priscilla.png",
+        "sinopsis": "Priscilla es una película de drama estadounidense dirigida por Sofia Coppola, a partir de un guion que coescribió con Bill Murray y Mitch Glazer. La película está protagonizada por Murray, Rashida Jones, Jessica Henwick, Marlon Wayans, y Alia Shawkat. La película sigue a un hombre que se encuentra en un viaje de negocios en Nueva York con su hija adulta."
+    },
+    {
+        "id": "05",
+        "titulo": "El Roomie",
+        "duracion": "99 min",
+        "genero": "Comedia, Romance",
+        "director": "Pitipol Ybarra",
+        "funciones": ["15:00", "17:30", "20:00", "22:30"],
+        "portada": "assets/peliculas/el-roomie.jpeg",
+        "sinopsis": "El Roomie es una película de comedia romántica mexicana dirigida por Pitipol Ybarra y protagonizada por Ana Brenda Contreras, Christopher Von Uckermann, y Luis Arrieta. La película se estrenó en México el 25 de febrero de 2022."
+    },
+    {
+        "id": "06",
+        "titulo": "Con Todos Menos Contigo",
+        "duracion": "103 min",
+        "genero": "Comedia",
+        "director": "Will Gluck",
+        "funciones": ["14:00", "15:30", "19:00", "21:30"],
+        "portada": "assets/peliculas/con-todos-menos-contigo.png",
+        "sinopsis": "Con Todos Menos Contigo es una película de comedia estadounidense dirigida por Will Gluck, a partir de un guion de Aline Brosh McKenna y Micah Fitzerman-Blue & Noah Harpster."
+    },
+    {
+        "id": "07",
+        "titulo": "Pobres Criaturas",
+        "duracion": "141 min",
+        "genero": "Ciencia Ficción, Romance",
+        "director": "Yorgos Lanthimos",
+        "funciones": ["15:00", "17:30", "20:00", "22:30"],
+        "portada": "assets/peliculas/pobres-criaturas.jpeg",
+        "sinopsis": "Pobres Criaturas es una película de ciencia ficción y romance dirigida por Yorgos Lanthimos, a partir de un guion que coescribió con Tony McNamara. La película está protagonizada por Emma Stone, Willem Dafoe, Mark Ruffalo, y Daniel Kaluuya. La película es una adaptación de la novela homónima de Alissa Nutting."
+    },
+    {
+        "id": "08",
+        "titulo": "Beekeeper: Sentencia de Muerte",
+        "duracion": "106 min",
+        "genero": "Acción, Thriller",
+        "director": "David Ayer",
+        "funciones": ["14:00", "15:30", "19:00", "21:30"],
+        "portada": "assets/peliculas/beekeeper-sentencia-de-muerte.png",
+        "sinopsis": "Beekeeper: Sentencia de Muerte es una película de acción y thriller estadounidense dirigida por David Ayer, a partir de un guion que coescribió con Skip Woods. La película está protagonizada por Jason Momoa, Mel Gibson, Josh Hartnett, y Eiza González."
+    },
+    {
+        "id": "09",
+        "titulo": "El Niño y La Garza",
+        "duracion": "123 min",
+        "genero": "Animación, Aventura",
+        "director": "Hayao Miyazaki",
+        "funciones": ["15:00", "17:30", "20:00", "22:30"],
+        "portada": "assets/peliculas/el-nino-y-la-garza.jpeg",
+        "sinopsis": "El Niño y La Garza es una película de animación y aventura japonesa dirigida por Hayao Miyazaki. La película está protagonizada por los actores de voz Rie Takahashi, Kaito Ishikawa, y Yūki Kaji. La película es una adaptación de la novela homónima de Diana Wynne Jones."
+    },
+    {
+        "id": "10",
+        "titulo": "Demon Slayer: Kimetsu No Yaiba- Rumbo",
+        "duracion": "104 min",
+        "genero": "Acción, Aventura",
+        "director": "Haruo Sotozaki",
+        "funciones": ["14:00", "15:30", "19:00", "21:30"],
+        "portada": "assets/peliculas/demon-slayer-kimetsu-no-yaiba-rumbo.png",
+        "sinopsis": "Demon Slayer: Kimetsu No Yaiba- Rumbo es una película de acción y aventura japonesa dirigida por Haruo Sotozaki. La película está protagonizada por los actores de voz Natsuki Hanae, Akari Kito, Hiro Shimono, Yoshitsugu Matsuoka, y Satoshi Hino. La película es una secuela de la serie de anime Demon Slayer: Kimetsu no Yaiba."
+    }
+]

@@ -1,0 +1,21 @@
+<shared-loading-spinner *ngIf="isLoading"></shared-loading-spinner>
+
+<div *ngIf="!isLoading && !combo" class="text-center alert alert-warning">
+    <p>Combo no encontrada</p>
+</div>
+
+<div *ngIf="combo" class="container">
+    <h2 class="fs-1">{{ combo.nombre }}</h2>
+    <hr>
+    <div class="row">
+        <div class="col-12 col-md-6">
+            <img [src]="combo.imagen" [alt]="combo.nombre" class="img-fluid rounded-4">
+        </div>
+        <div class="col-12 col-md">
+            <h3 class="fs-3">Descripción</h3>
+            <p>{{ combo.descripcion }}</p>
+            <h3 class="fs-3">Precio</h3>
+            <p>{{ combo.precio | currency }}</p>
+            <div class="mt-2">
+                <a [routerLink]="['/alimentos']" class="btn btn-primary" (click)="agregarAlimento(combo)">Agregar a Carrito</a>
+            </div>
