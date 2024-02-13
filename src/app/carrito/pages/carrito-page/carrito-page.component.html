@@ -1,36 +1,39 @@
-<div class="container">
-<h2>Carrito</h2>
-<p>El carrito está vacío</p>
-
-<ul>
-    <li *ngFor="let item of carrito">
-        {{item.nombre}} - {{item.precio | currency}}
-    </li>
-</ul>
-
-
-
-<div class="mt-4">
-   
-    <div class="row">
-        <div class="fs-2 fw-bold col">Total: </div>
-    <span class="fs-2 col">{{totalCarrito | currency}}</span>
+<!-- <div class="d-flex align-items-end flex-column pb-5 vh-100 justify-content-start"> -->
+    <div class="d-flex flex-column h-100 justify-content-between pb-4">
+    <div class="w-100 overflow-auto">
+        <h2>Carrito</h2>
+        <p *ngIf="carrito.length === 0">El carrito está vacío</p>
+        <ul class="list-group w-100">
+            <li class="list-group-item p-1" *ngFor="let item of carrito">
+                <p class="mb-1 fw-bold">{{item.nombre}}</p>
+                <p class="mb-1">{{item.precio | currency}}</p>
+            </li>
+        </ul>
     </div>
-    <div class="row">
-        <div class="col">
-            <div ngbDropdown class="d-inline-block">
-                <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
-                    Moneda
-                </button>
-                <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
-                    <button ngbDropdownItem>Pesos</button>
-                    <button ngbDropdownItem>Dólares</button>
-                    <button ngbDropdownItem>Euros</button>
-                </div>
-            </div>
+
+    <div class="mb-5 container">
+        <div class="row">
+            <div class="fs-5 fw-bold col p-0">Total: </div>
+            <span class="fs-5 col-8 p-0">{{totalCarrito | currency}} {{this.moneda}}</span>
         </div>
-        <button type="button" class="btn btn-primary col">Comprar</button>
+        <div class="row">
+
+                <div ngbDropdown class="d-inline-block col">
+                    <button type="button" class="btn btn-outline-primary" id="dropdownBasic1" ngbDropdownToggle>
+                        Moneda
+                    </button>
+                    <div ngbDropdownMenu aria-labelledby="dropdownBasic1">
+                        <button ngbDropdownItem (click)="this.tasaCambio=1; this.moneda='MXN';">Pesos</button>
+                        <button ngbDropdownItem (click)="this.tasaCambio=0.059; this.moneda='USD';">Dólares</button>
+                        <button ngbDropdownItem (click)="this.tasaCambio=0.054; this.moneda='EUR';">Euros</button>
+                    </div>
+                </div>
+
+                <button type="button" class="btn btn-primary col" (click)="this.carrito.length != 0 ? this.compraRealizada = true : this.compraRealizada = false">Comprar</button>
+        </div>
+        <div class="alert alert-success" role="alert" *ngIf="compraRealizada">
+            Felicidades! Compra realizada con éxito por {{totalCarrito | currency}} {{moneda}}
+        </div>
     </div>
-    
-</div>
+
 </div>
