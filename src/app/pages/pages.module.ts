@@ -7,6 +7,7 @@ import { FoodComponent } from './food/food.component';
 import { ContactComponent } from './contact/contact.component';
 import { MoviesComponent } from './movies/movies.component';
 import { SharedModule } from '../shared/shared.module';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -21,7 +22,8 @@ import { SharedModule } from '../shared/shared.module';
   imports: [
     CommonModule,
     RouterModule,
-    SharedModule
+    SharedModule,
+    ReactiveFormsModule
   ]
 })
 export class PagesModule { }

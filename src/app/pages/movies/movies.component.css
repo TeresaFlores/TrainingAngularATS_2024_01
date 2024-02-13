@@ -12,3 +12,17 @@
 .btn-primary{
     background-color: #16669f;
 }
+.container-description{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+.img-container{
+    width: 50%;
+}
+.btn-sm{
+    margin-left: 10px;
+}
+.movie-description{
+    display: table-cell;
+}

@@ -4,6 +4,8 @@ import { CommonModule } from '@angular/common';
 import { NavbarComponent } from './navbar/navbar.component';
 import { SliderComponent } from './slider/slider.component';
 import { CardMovieComponent } from './card-movie/card-movie.component';
+import { ContactFormComponent } from './contact-form/contact-form.component';
+import { ReactiveFormsModule } from '@angular/forms';
 
 
 
@@ -11,16 +13,19 @@ import { CardMovieComponent } from './card-movie/card-movie.component';
   declarations: [
     NavbarComponent,
     SliderComponent,
-    CardMovieComponent
+    CardMovieComponent,
+    ContactFormComponent
   ],
   imports: [
     CommonModule,
     RouterModule,
+    ReactiveFormsModule
   ],
   exports: [
     NavbarComponent,
     SliderComponent,
-    CardMovieComponent
+    CardMovieComponent,
+    ContactFormComponent
   ]
 })
 export class SharedModule { }

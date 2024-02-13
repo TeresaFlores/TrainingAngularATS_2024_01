@@ -12,3 +12,13 @@
 .btn-primary{
     background-color: #16669f;
 }
+
+.btn-sm{
+    margin-left: 10px;
+}
+
+.card-body{
+    span {
+        color: #EFF3F5
+    }
+}
