@@ -7,18 +7,35 @@
       />
     </div>
     <div class="movie-description">
-      <div class="container">
-        <button  class="btn btn-primary btn-sm">13:00</button>
-        <button  class="btn btn-primary btn-sm">15:30</button>
-        <button  class="btn btn-primary btn-sm">17:00</button>
-        <button  class="btn btn-primary btn-sm">19:30</button>
-        <button  class="btn btn-primary btn-sm">21:00</button>
-        <button  class="btn btn-primary btn-sm">22:30</button>
+      <div class="description">
+        <h5 class="card-title">{{ movie?.original_title }}</h5>
+        <p class="card-text">{{ movie?.overview }}</p>
+      </div>
+      <div class="schedule">
+        <span>IMAX</span>
+        <div class="container">
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '13:00')">13:00</button>
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '15:30')">15:30</button>
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '17:00')">17:00</button>
+        </div>
+      </div>
+      <div class="rooms">
+        <span>MacroXE</span>
+        <div class="container">
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '13:00')">13:00</button>
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '15:30')">15:30</button>
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '17:00')">17:00</button>
+        </div>
+      </div>
+      <div class="rooms">
+        <span>Classic</span>
+        <div class="container">
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '13:00')">13:00</button>
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '15:30')">15:30</button>
+          <button class="btn btn-primary btn-sm" (click)="GoToBuyTicket(movie, '17:00')">17:00</button>
+        </div>
       </div>
     </div>
   </div>
-  <div class="card-body">
-    <h5 class="card-title">{{ movie?.original_title }}</h5>
-    <p class="card-text">{{ movie?.overview }}</p>
-  </div>
+  <div class="card-body"></div>
 </div>

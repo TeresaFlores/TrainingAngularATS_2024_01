@@ -1,0 +1,43 @@
+.card-text{
+    color: #C8CDD0;
+}
+.text-secondary{
+    color: #EFF3F5
+}
+.card{
+   background-color: #212E36;
+   box-shadow: 0 1px 10px rgba(188, 190, 193, 0.549);
+}
+
+.btn-primary{
+    background-color: #16669f;
+}
+.container-description{
+    display: flex;
+    justify-content: space-around;
+    padding: 20px;
+}
+.description{
+    width: 500px;
+    margin-top: 10px;
+}
+.img-container{
+    width: 50%;
+}
+.btn-sm{
+    margin-left: 10px;
+}
+.movie-description{
+    display: table-cell;
+}
+.schedule{
+    margin-top: 10px;
+}
+.rooms{
+    margin-top: 20px;
+}
+.btn-book{
+    display: flex;
+    justify-content: end;
+    margin-top: 50px;
+}

@@ -23,7 +23,7 @@ import { ReactiveFormsModule } from '@angular/forms';
     CommonModule,
     RouterModule,
     SharedModule,
-    ReactiveFormsModule
-  ]
+    ReactiveFormsModule,
+  ],
 })
 export class PagesModule { }

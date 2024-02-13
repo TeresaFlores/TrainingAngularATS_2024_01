@@ -17,6 +17,10 @@
     justify-content: space-around;
     padding: 20px;
 }
+.description{
+    width: 500px;
+    margin-top: 10px;
+}
 .img-container{
     width: 50%;
 }
@@ -25,4 +29,15 @@
 }
 .movie-description{
     display: table-cell;
+}
+.schedule{
+    margin-top: 10px;
+}
+.rooms{
+    margin-top: 20px;
+}
+.btn-book{
+    display: flex;
+    justify-content: end;
+    margin-top: 50px;
 }
